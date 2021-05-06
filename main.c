@@ -1,5 +1,14 @@
 #include "./miniRT.h"
 
+
+//argv[1]確認して，読み取りファイルをdefineする．
+//00が頭にくる場合すべてatolではねるようにしたい．
+//argv[1]が.rtで終わるファイルかを確認する．vnoが000の場合はerrorケース
+//unirt vectorの大きさが0になる場合（全ての要素が0の時）をはじく．
+//最後に全部freeする．
+//カメラが一個もない時のerror処理．
+//A.Rが一つしかないかを確認してerror処理．
+//
 int main(int argc, char *argv[])
 {
 	t_minirt	minirt;
@@ -12,7 +21,7 @@ int main(int argc, char *argv[])
 		printf("Error\n\nargument error.\nArguments have to be 2 or 3.\n");
 		return (0);
 	}
-	else if(argc == 2) //argv[1]が.rtで終わるファイルかを確認する．vnoが000の場合はerrorケース
+	else if(argc == 2) 
 	{
 		//if (is_rtfile(argv[1]))
 			//return (printf("Errpr\n\nthe file name is not good."));

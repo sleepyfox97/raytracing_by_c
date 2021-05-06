@@ -88,15 +88,3 @@ char	**ft_split(char const *s, char c)
 	box[i] = NULL;
 	return (box);
 }
-
-// int main()
-// {
-// 	char **line;
-
-// 	line = ft_split("dsafdaf\n\n1111fdaf1111gare111111", '\n');
-// 	while(*line != NULL)
-// 	{
-// 		printf("line=%s\n", *line);
-// 		line++;
-// 	}
-// }

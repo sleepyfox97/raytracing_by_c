@@ -201,7 +201,7 @@ int	ft_iscross(t_gob *ob, t_light *l, t_cam *cam);
 int iscross_sp(t_gob *sp, t_vec3 lp, t_cam *cam);
 int	iscross_pl(t_gob *pl, t_vec3 lp, t_cam *cam);
 int	iscross_sq(t_gob *sq, t_vec3 lp, t_cam *cam);
-int	iscross_cy(t_gob *cy, t_vec3 lp, t_cam *cam);
+int	iscross_cy(t_gob *cy, t_vec3 lp, t_cam *cam)
 int	iscross_tr(t_gob *tr, t_vec3 lp, t_cam *cam);
 double	ft_quadratic_func(double a, double b, double c);
 

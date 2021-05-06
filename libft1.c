@@ -1,5 +1,5 @@
 #include "./miniRT.h"
-
+//atof atolをもっかい見直し，良くできないかを考える．
 int	ft_isspace(char c)
 {
 	if (c == ' ' || (9 <= c && c <= 13))
@@ -7,7 +7,7 @@ int	ft_isspace(char c)
 	else
 		return (0);
 }
-//精度とnormが微妙
+
 int	ft_atof(char *s, int i, double *result)
 {
 	double	j;
@@ -103,26 +103,3 @@ char	*ft_strjoin(char *s1, char *s2)
 	s1 = NULL;
 	return (result);
 }
-
-// int	main(int argc, char *argv[])
-// {
-// 	double	a;
-// 	double	b;
-
-// 	if (argc != 3)
-// 		return (0);
-// 	ft_atol(argv[1], 0, &a);
-// 	ft_atof(argv[2], 0, &b);
-// 	printf("a=%ld b=%.30lf\n", (long)a, b);
-// 	return (0);
-// }
-
-// int main(int argc, char *argv[])
-// {
-// 	char *tmp = malloc(6);
-
-// 	char *s = ft_strjoin(argv[1], argv[2]);
-// 	printf("%s\n", s);
-// 	// s = ft_strjoin(NULL, argv[1]);
-// 	// printf("%s\n", s);
-// }

@@ -21,7 +21,6 @@ int	get_pv(char *line, int i, t_vec3 *v)
 	return (i);
 }
 
-//t_vec3が二つ連続で並んでないといけない場合に使える，関数(cam, cy,tr,sq,pl)
 int	get_two_vec(char *line, int i, t_vec3 *v1, t_vec3 *v2)
 {
 	if (!ft_isspace(line[i]))
@@ -30,22 +29,6 @@ int	get_two_vec(char *line, int i, t_vec3 *v1, t_vec3 *v2)
 	if (i == 0 || !ft_isspace(line[i]))
 		return (0);
 	i = get_pv(line, i, v2);
-	if (i == 0 || !ft_isspace(line[i]))
-		return (0);
-	return (i);
-}
-
-int	get_three_vec(char *line, int i, t_vec3 *v1, t_vec3 *v2, t_vec3 *v3)
-{
-	if (!ft_isspace(line[i]))
-		return (0);
-	i = get_pv(line, i, v1);
-	if (i == 0 || !ft_isspace(line[i]))
-		return (0);
-	i = get_pv(line, i, v2);
-	if (i == 0 || !ft_isspace(line[i]))
-		return (0);
-	i = get_pv(line, i, v3);
 	if (i == 0 || !ft_isspace(line[i]))
 		return (0);
 	return (i);
@@ -76,3 +59,19 @@ int	ft_get_color(char *line, int i, t_color *color)
 		return (0);
 	return (i);
 }
+
+// int	get_three_vec(char *line, int i, t_vec3 *v1, t_vec3 *v2, t_vec3 *v3)
+// {
+// 	if (!ft_isspace(line[i]))
+// 		return (0);
+// 	i = get_pv(line, i, v1);
+// 	if (i == 0 || !ft_isspace(line[i]))
+// 		return (0);
+// 	i = get_pv(line, i, v2);
+// 	if (i == 0 || !ft_isspace(line[i]))
+// 		return (0);
+// 	i = get_pv(line, i, v3);
+// 	if (i == 0 || !ft_isspace(line[i]))
+// 		return (0);
+// 	return (i);
+// }

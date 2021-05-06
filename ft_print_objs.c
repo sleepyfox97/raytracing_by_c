@@ -13,13 +13,14 @@ void	ft_print_obj(t_minirt *minirt)
 	{
 		i = 0;
 		ft_light_prepare(minirt->firstlight, minirt->firstcam);
+		//カメラごとにsceneをいれる関数を作る．
 		while (i < (int)minirt->width)
 		{
 			x = i - minirt->width / 2;
 			j = 0;
 			while (j < (int)minirt->hight)
 			{
-				minirt->firstgob = tmp;
+				minirt->firstgob = tmp;//無くても動くはず
 				y = (-1) * (j - minirt->hight / 2);
 				minirt->firstcam->image[i * (int)minirt->hight + j] = ft_calcu_color(minirt, x, y);
 				j++;
@@ -32,14 +33,14 @@ void	ft_print_obj(t_minirt *minirt)
 	}
 }
 
-int	ft_calcu_color(t_minirt *rt, double x, double y)
+int	ft_calcu_color(t_minirt *rt, double x, double y)//名前変えるgit 
 {
 	int color;
 	t_color	c;
 
 	rt->firstcam->distance = INFINITY;
 	rt->firstcam->vray = ft_make_ray(rt->firstcam, x, y);
-	rt->firstcam->tmpcolor = ft_set_color(200, 200, 200);
+	rt->firstcam->tmpcolor = ft_set_color(0, 0, 0);
 	while (1)
 	{
 		if (rt->firstgob->type == 1)

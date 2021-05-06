@@ -24,6 +24,8 @@ int		ft_isnormal(t_vec3 *v)
 		return (0);
 	if (v->z < -1 || 1 < v->z)
 		return (0);
+	if (v->x == 0 && v->y == 0 && v->z == 0)
+		return (0);
 	*v = ft_make_unitvec(*v);
 	return (1);
 }

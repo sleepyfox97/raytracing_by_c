@@ -25,7 +25,6 @@ int	ft_iscross(t_gob *ob, t_light *l, t_cam *cam)
 			i = iscross_cy(ob, l->p, cam);
 		else if (ob->type == 5)
 			i = iscross_tr(ob, l->p, cam);
-
 	}
 	return (i);
 }

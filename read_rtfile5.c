@@ -56,7 +56,7 @@ int	ft_input_SqAndCy_sub(t_gob *new, char *line, int i)
 	if (!ft_isspace(line[i]))
 		return (0);
 	i = get_two_vec(line, i, &(new->p1), &(new->vno));
-	if (i == 0 || !ft_isnormal(&(new->vno)))//±1の範囲にあれば，正規化して返す．
+	if (i == 0 || !ft_isnormal(&(new->vno)))
 		return (0);
 	i = ft_atof(line, i, &(new->d));
 	if (i == 0 || !ft_isspace(line[i]) || (new->d) < 0)
@@ -74,8 +74,10 @@ int	ft_triangle_input(t_gob **firstgob, char *line)
 		return (0);
 	i = 2;
 	new->type = 5;
-	i = get_three_vec(line, i, &(new->p1), &(new->p2), &(new->p3));
-	if (i == 0)
+	i = get_two_vec(line, i, &(new->p1), &(new->p2));
+	if (i == 0 || !ft_isspace(line[i]))
+		return (ft_safe_free1(new));
+	i = get_pv(line, i, &(new->p3))
 		return (ft_safe_free1(new));
 	i = ft_get_color(line, i, &(new->color));
 	if (i == 0 || line[i] != '\0')

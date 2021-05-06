@@ -81,7 +81,7 @@ int	ft_plane_input(t_gob **firstgob, char *line)
 	if (!ft_isspace(line[i]))
 		return (ft_safe_free1(new));
 	i = get_two_vec(line, i, &(new->p1), &(new->vno));
-	if (i == 0 || !ft_isnormal(&(new->vno)))//各成分が±1の範囲内にあるかを確認してたうえで，正規化されたベクトルを代入．
+	if (i == 0 || !ft_isnormal(&(new->vno)))
 		return (ft_safe_free1(new));
 	i = ft_get_color(line, i, &(new->color));
 	if (i == 0 || line[i] != '\0')
