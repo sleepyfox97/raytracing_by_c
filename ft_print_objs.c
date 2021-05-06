@@ -39,7 +39,7 @@ int	ft_calcu_color(t_minirt *rt, double x, double y)
 
 	rt->firstcam->distance = INFINITY;
 	rt->firstcam->vray = ft_make_ray(rt->firstcam, x, y);
-	rt->firstcam->tmpcolor = ft_set_color(255, 0, 0);
+	rt->firstcam->tmpcolor = ft_set_color(200, 200, 200);
 	while (1)
 	{
 		if (rt->firstgob->type == 1)
@@ -59,7 +59,6 @@ int	ft_calcu_color(t_minirt *rt, double x, double y)
 	c = rt->firstcam->tmpcolor;
 	color = (int)c.r << 16 | (int)c.g << 8 | (int)c.b;
 	return (color);
-	//objectに関するwhile文の中で，light影の判定，重なり判定を行い，色を決定
 }
 
 void	ft_show_image(t_minirt *minirt)

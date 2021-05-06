@@ -191,6 +191,8 @@ t_color	ft_ambient_light(t_color c_color, t_amblight a);
 void 	ft_diffusion_light_sp(t_cam *cam, t_light *l, t_gob *sp, t_vec3 v);
 void	ft_diffusion_light_pl(t_cam *cam, t_light *l, t_gob *pl);
 void	ft_diffusion_light_cy(t_cam *cam, t_light *l, t_gob *cy);
+int	iscycross(t_gob *cy, t_vec3 lp, t_vec3 p);
+
 t_color	ft_set_diffuse_color1(t_color c_c, t_color l_c, t_color s_c, double cos);
 t_color	ft_set_diffuse_color2(t_color c_c, t_color l_c, t_color s_c, double cos);
 
@@ -199,6 +201,7 @@ int	ft_iscross(t_gob *ob, t_light *l, t_cam *cam);
 int iscross_sp(t_gob *sp, t_vec3 lp, t_cam *cam);
 int	iscross_pl(t_gob *pl, t_vec3 lp, t_cam *cam);
 int	iscross_sq(t_gob *sq, t_vec3 lp, t_cam *cam);
+int	iscross_cy(t_gob *cy, t_vec3 lp, t_cam *cam);
 int	iscross_tr(t_gob *tr, t_vec3 lp, t_cam *cam);
 double	ft_quadratic_func(double a, double b, double c);
 

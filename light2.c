@@ -18,8 +18,37 @@ void	ft_diffusion_light_cy(t_cam *cam, t_light *l, t_gob *cy)
 	v1 = ft_linear_transform(l->p, p, 1, -1);
 	v1 = ft_make_unitvec(v1);
 	cos1 = ft_inner_product(vncp, v1);
-	if (cos1 > 0)
+	if (cos1 > 0 && !iscycross(cy, l->p, p))
 		cam->tmpcolor = ft_set_diffuse_color2(cam->tmpcolor, l->color, cy->color, cos1 * l->r);
-	//p = 
+	else
+		return ;
+	p = ft_linear_transform(v1, vncp, (-2) * cos1, 1);
+	p = ft_make_unitvec(p);
+	cos2 = ft_inner_product(cam->vray, p);
+	if (cos2 > 0)
+	{
+		cos2 = pow(cos2, 10) * l->r * 0.6;//正の時に2乗しないとダメ．
+		cam->tmpcolor = ft_set_diffuse_color2(cam->tmpcolor, l->color, cy->color, cos2);
+	}
 	return ;
+}
+
+//計算の精度の問題で，0とinfあたりをぐるぐるしてしまい，正確にtの値が取れていない．
+//本来，infの場所が，なぜか，0前後で判断されてしまっている．(実際，dそのものから，出してるからそうなる)
+//lightの場所から伸ばした，直線が，二箇所と交わるかの判断をする方で考えることにする？
+int	iscycross(t_gob *cy, t_vec3 lp, t_vec3 p)
+{
+	t_vec3	tmp;
+	double	l;
+	double	t;
+
+	if (cy->p2.x == 1)
+		return (0);
+	tmp = ft_linear_transform(lp, p, -1, 1);
+	l = sqrt(ft_v_d_len(tmp));
+	tmp = ft_make_unitvec(tmp);
+	t = ft_make_cy(cy, tmp, lp);
+	if ( 0 < t && t < l - 0.00001)
+		return (1);
+	return (0);
 }

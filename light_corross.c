@@ -21,10 +21,11 @@ int	ft_iscross(t_gob *ob, t_light *l, t_cam *cam)
 			i = iscross_pl(ob, l->p, cam);
 		else if (ob->type == 3)
 			i = iscross_sq(ob, l->p, cam);
+		else if (ob->type == 4)
+			i = iscross_cy(ob, l->p, cam);
 		else if (ob->type == 5)
 			i = iscross_tr(ob, l->p, cam);
-		// else if (ob->type == 5)
-		// 	i = iscross_cy(ob, l->p, cam);
+
 	}
 	return (i);
 }
@@ -98,10 +99,27 @@ int	iscross_tr(t_gob *tr, t_vec3 lp, t_cam *cam)
 	t_vec3 p;
 	t_vec3 tmp1;
 	double d;
+
 	p = ft_linear_transform(cam->vray, cam->p, cam->distance, 1);
 	tmp1 = ft_linear_transform(lp, p, 1, -1);
 	d = ft_make_tr(tr, ft_make_unitvec(tmp1), p);
 	if (d < sqrt(ft_v_d_len(tmp1)))//tmp1の二乗はlightまでの距離のこと
+		return (1);
+	return (0);
+}
+
+
+//うまく行かない例が存在する．cylinderを覗き込むように光源が存在するときに，影が変になる．
+int	iscross_cy(t_gob *cy, t_vec3 lp, t_cam *cam)
+{
+	t_vec3	p;
+	t_vec3	tmp1;
+	double	d;
+
+	p = ft_linear_transform(cam->vray, cam->p, cam->distance, 1);
+	tmp1 = ft_linear_transform(lp, p, 1, -1);
+	d = ft_make_cy(cy, ft_make_unitvec(tmp1), p);
+	if (d < sqrt(ft_v_d_len(tmp1)) )//tmp1の二乗はlightまでの距離のこと
 		return (1);
 	return (0);
 }

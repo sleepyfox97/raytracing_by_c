@@ -39,20 +39,6 @@ double	ft_make_cy(t_gob *cy, t_vec3 vray, t_vec3 camp)
 	b = ft_inner_product(vray, cy->vctoc)  - c * a;
 	c = ft_v_d_len(cy->vctoc) - c * c - cy->d * cy->d / 4;
 	d = ft_make_cy_sub(a, b, c, cy);
-	// d = ft_quadratic_func((1 - a * a), b, c);
-	// if (d == INFINITY)
-	// 	return (INFINITY);
-	// y = d * a  + ft_inner_product(cy->vctoc, cy->vno);;
-	// if (0 <= y && y <= cy->h)
-	// 	return (d);
-	// else
-	// {
-	// 	d = d + 2 * sqrt(b * b - (1 - a * a) * c) / (1 - a * a);
-	// 	y = d * a  + ft_inner_product(cy->vctoc, cy->vno);
-	// 	if (0 <= y && y <= cy->h)
-	// 		return (d);
-	// 	return (INFINITY);
-	// }
 	return (d);
 }
 

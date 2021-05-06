@@ -30,7 +30,7 @@ void 	ft_diffusion_light_sp(t_cam *cam, t_light *l, t_gob *sp, t_vec3 v)
 	cos2 = ft_inner_product(cam->vray, v3);
 	if (cos2 > 0)
 	{
-		cos2 = pow(cos2, 10) * l->r * 0.6;//正の時に2乗しないとダメ．
+		cos2 = pow(cos2, 10) * l->r * 1;//正の時に2乗しないとダメ．
 		cam->tmpcolor = ft_set_diffuse_color2(cam->tmpcolor, l->color, sp->color, cos2);
 	}
 	return ;
