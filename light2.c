@@ -18,7 +18,7 @@ void	ft_diffusion_light_cy(t_cam *cam, t_light *l, t_gob *cy)
 	v1 = ft_linear_transform(l->p, p, 1, -1);
 	v1 = ft_make_unitvec(v1);
 	cos1 = ft_inner_product(vncp, v1);
-	if (cos1 > 0 && !iscycross(cy, l->p, p))
+	if (cos1 > 0 && !iscycross(cy, l->p, p))//自分自身との交差判定ここでしてる．
 		cam->tmpcolor = ft_set_diffuse_color2(cam->tmpcolor, l->color, cy->color, cos1 * l->r);
 	else
 		return ;
@@ -36,7 +36,7 @@ void	ft_diffusion_light_cy(t_cam *cam, t_light *l, t_gob *cy)
 //計算の精度の問題で，0とinfあたりをぐるぐるしてしまい，正確にtの値が取れていない．
 //本来，infの場所が，なぜか，0前後で判断されてしまっている．(実際，dそのものから，出してるからそうなる)
 //lightの場所から伸ばした，直線が，二箇所と交わるかの判断をする方で考えることにする？
-int	iscycross(t_gob *cy, t_vec3 lp, t_vec3 p)
+int	iscycross(t_gob *cy, t_vec3 lp, t_vec3 p)//
 {
 	t_vec3	tmp;
 	double	l;

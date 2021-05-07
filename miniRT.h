@@ -15,6 +15,17 @@
 # include <X11/extensions/XShm.h>
 # include "./minilibx-linux/mlx.h"
 
+# define X_EVENT_KEY_PRESS		2
+# define K_ESC		65307
+# define K_UP		65362
+# define K_DOWN		65364
+# define K_LEFT		65361
+# define K_RIGHT	65363
+# define K_A		97
+# define K_D		100
+# define K_W		119
+# define K_S		115
+
 //3D vector
 typedef struct s_vec3
 {
@@ -109,6 +120,8 @@ typedef struct s_minirt
 	t_amblight	al;
 	double		width;
 	double		hight;
+	void		*mlx_ptr;
+	void		*win_ptr;
 }	t_minirt;
 
 //in main file
@@ -151,8 +164,8 @@ int		ft_triangle_input(t_gob **firstgob, char *line);
 //出力関係 testまだ
 
 //出力計算の前準備
-int	ft_prepare_print(t_minirt *minirt);
-int	ft_cam_prepare(t_cam *firstcam, double width, double hight);
+int		ft_prepare_print(t_minirt *minirt);
+int		ft_cam_prepare(t_cam *firstcam, double width, double hight);
 void	ft_light_prepare(t_light *flight, t_cam *cam);
 void	ft_obj_prepare(t_gob *firstgob);
 void	ft_pre_sq(t_gob *sq);

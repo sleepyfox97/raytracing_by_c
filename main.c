@@ -26,6 +26,12 @@ int main(int argc, char *argv[])
 		//if (is_rtfile(argv[1]))
 			//return (printf("Errpr\n\nthe file name is not good."));
 		ft_type2(&minirt, argv[1]);
+
+		mlx_hook(win, X_EVENT_KEY_PRESS, 1L<<0, &key_press, &param);
+
+		mlx_loop(mlx_ptr);
+		ft_show_image(minirt);
+		printf("if this comment shows, You can write good code\n");
 	}
 	else if (argc == 3)
 	{
@@ -51,8 +57,7 @@ void	ft_type2(t_minirt *minirt, char *argv)
 		print_prepare_cam(minirt->firstcam);
 		print_prepare_obj(minirt->firstgob);
 		ft_print_obj(minirt);
-		ft_show_image(minirt);
-		printf("if this comment shows, You can write good code\n");
+
 	}
 	//free everything.
 	return ;

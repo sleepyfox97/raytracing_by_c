@@ -84,7 +84,6 @@ void	ft_show_image(t_minirt *minirt)
 		}
 		i++;
 	}
-	mlx_loop(mlx_ptr);
 	return ;
 }
 

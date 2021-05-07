@@ -22,8 +22,6 @@ double	ft_cy_color(t_gob *cy, t_cam *cam, t_light *l, t_amblight al)
 	return (cam->distance);
 }
 
-//yの範囲ないになかった時に，もう一方の解が採用できるかの場合分けが必要になる．
-//計算量がダメダメなので，多分もう少し上手に最適化できるはず．
 double	ft_make_cy(t_gob *cy, t_vec3 vray, t_vec3 camp)
 {
 	double	a;

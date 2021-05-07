@@ -116,68 +116,9 @@ int iscross_cy(t_gob *cy, t_vec3 lp, t_cam *cam)
 	double	t;
 
 	p = ft_linear_transform(cam->vray, cam->p, cam->distance, 1);
-	tmp1 = ft_linear_transform(lp, p, 1, -1);//拡散点からlightへのベクトル．
+	tmp1 = ft_linear_transform(lp, p, 1, -1);
 	t = ft_make_cy(cy, ft_make_unitvec(tmp1), p);
 	if (t * t < ft_v_d_len(tmp1))
 		return (1);
 	return (0);
 }
-//うまく行かない例が存在する．cylinderを覗き込むように光源が存在するときに，影が変になる．
-
-// int	iscross_cy(t_gob *cy, t_vec3 lp, t_cam *cam)
-// {
-// 	t_vec3	p;
-// 	t_vec3	tmp1;
-// 	double	t;
-
-
-// 	t_vec3	tmp2;
-// 	double	a, b, c, d, h;
-
-
-// 	p = ft_linear_transform(cam->vray, cam->p, cam->distance, 1);//拡散点の場所
-// 	tmp1 = ft_linear_transform(lp, p, 1, -1);//拡散点からlightへのベクトル．
-
-// 	//make_cy_zone
-// 	tmp2 = ft_make_unitvec(tmp1);
-// 	a = ft_inner_product(tmp2, cy->vno);
-// 	if (a >= 1 || a <= -1)
-// 		return (0);
-// 	cy->vctoc = ft_linear_transform(p, cy->p1, 1, -1);
-// 	c = ft_inner_product(cy->vctoc, cy->vno);
-// 	b = ft_inner_product(tmp2, cy->vctoc) - c * a;
-// 	c = ft_v_d_len(cy->vctoc) - c * c - cy->d *cy->d / 4;
-// 	//sub
-// 	double tmp = 1 - a * a;
-// 	d = b * b - c * tmp;
-// 	if (d < 0)
-// 		t = INFINITY;
-// 	//t = ft_quadratic_func(tmp, b, c);
-// 	if (d >= 0)
-// 	{
-// 		if (c < 0)
-// 			t = (((-1) * b + sqrt(d)) / tmp);
-// 		else if (c >= 0 && b <= 0)
-// 			t = (((-1) * b - sqrt(d)) / tmp);
-// 		else
-// 			t = INFINITY;
-// 	}
-// 	if (0 < t && t < INFINITY)
-// 	{
-// 		cy->p2.y = t * a + ft_inner_product(cy->vctoc, cy->vno);
-// 		if (0 <= cy->p2.y && cy->p2.y <= cy->h)
-// 		{
-// 			if (t * t < ft_v_d_len(tmp1))
-// 				return (1);
-// 		}
-// 		else if (c >= 0)//ここの中におかしなパターンが入り込んでる
-// 		{
-// 			t = t + (2 * sqrt(d) / (1 - a * a));
-// 			cy->p2.y = t * a + ft_inner_product(cy->vctoc, cy->vno);
-// 			if (0 <= cy->p2.y && cy->p2.y <= cy->h)
-// 				if (t * t < ft_v_d_len(tmp1))
-// 					return (1);
-// 		}
-// 	}
-// 	return (0);
-// }
