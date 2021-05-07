@@ -50,14 +50,16 @@ double ft_make_cy_sub(double a, double b, double c, t_gob *cy)
 
 	tmp = (1 - a * a);
 	d = b * b - c * tmp;
+	if (d < 0 || tmp == 0)
+		return (INFINITY);
 	t = ft_quadratic_func(tmp, b, c);
-	if (t < INFINITY)
+	if (0 < t && t < INFINITY)
 	{
 		cy->p2.y = t * a  + ft_inner_product(cy->vctoc, cy->vno);
 		cy->p2.x = 1;
 		if (0 <= cy->p2.y && cy->p2.y <= cy->h)
 			return (t);
-		else
+		else if (c >= 0)
 		{
 			t = t + 2 * sqrt(d) / tmp;
 			cy->p2.y = t * a  + ft_inner_product(cy->vctoc, cy->vno);
@@ -68,11 +70,3 @@ double ft_make_cy_sub(double a, double b, double c, t_gob *cy)
 	}
 	return (INFINITY);
 }
-
-//解の存在が確認されているなら，
-//a正の時
-//c < 0 だったら，(-b  + sqrt(b ^2 - 4ac))/2
-//c >= 0 かつ b /2 > 0だったら，(-b - sqrt(b^2 - 4ac))/2
-//負の時
-//c > 0 だったら，(-b + sqrt(b ^2 - 4ac))/2
-//c <= 0 かつ b /2 > 0だったら，(-b - sqrt(b^2 - 4ac))/2
