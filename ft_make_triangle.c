@@ -22,6 +22,7 @@ double	ft_tr_color(t_gob *tr, t_cam *cam, t_light *l, t_amblight al)
 	return (cam->distance);
 }
 
+//tmp1 is place of reflect point, so can out of while.
 double	ft_make_tr(t_gob *tr, t_vec3 vray, t_vec3 camp)
 {
 	double	distance;
@@ -34,7 +35,7 @@ double	ft_make_tr(t_gob *tr, t_vec3 vray, t_vec3 camp)
 	if (distance <= 0 || distance == INFINITY)
 		return (INFINITY);
 	tmp1 = ft_linear_transform(vray, camp, distance, 1);
-	tmp2 = ft_make_unitvec(ft_linear_transform(tmp1, tr->p1, 1, -1));//p1からray・平面の交点へのベクトル
+	tmp2 = ft_make_unitvec(ft_linear_transform(tmp1, tr->p1, 1, -1));
 	a = ft_inner_product(tmp2, tr->vtb1);
 	b = ft_inner_product(tmp2, tr->vtb2);
 	if ((tr->d <= a && a <= 1) && (tr->d <= b && b <= 1))

@@ -78,6 +78,7 @@ int	ft_triangle_input(t_gob **firstgob, char *line)
 	if (i == 0 || !ft_isspace(line[i]))
 		return (ft_safe_free1(new));
 	i = get_pv(line, i, &(new->p3));
+	if (i == 0 || !ft_isspace(line[i]))
 		return (ft_safe_free1(new));
 	i = ft_get_color(line, i, &(new->color));
 	if (i == 0 || line[i] != '\0')

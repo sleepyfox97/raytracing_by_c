@@ -16,7 +16,7 @@ void	ft_put_vector(t_vec3 v)
 	return ;
 }
 
-int		ft_isnormal(t_vec3 *v)
+int	ft_isnormal(t_vec3 *v)
 {
 	if (v->x < -1 || 1 < v->x)
 		return (0);
@@ -29,7 +29,6 @@ int		ft_isnormal(t_vec3 *v)
 	*v = ft_make_unitvec(*v);
 	return (1);
 }
-
 
 //not use these function
 t_vec3	ft_gramschmidt_1(t_vec3 v1, t_vec3 v2)

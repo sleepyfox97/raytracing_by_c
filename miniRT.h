@@ -15,6 +15,7 @@
 # include <X11/extensions/XShm.h>
 # include "./minilibx-linux/mlx.h"
 
+
 # define X_EVENT_KEY_PRESS		2
 # define K_ESC		65307
 # define K_UP		65362
@@ -120,15 +121,19 @@ typedef struct s_minirt
 	t_amblight	al;
 	double		width;
 	double		hight;
-	void		*mlx_ptr;
-	void		*win_ptr;
+	void		*mlx;
+	void		*win;
 }	t_minirt;
 
 //in main file
 //initialize minirt struct;
 void	ft_initialize_minirt(t_minirt *minirt);
+//check filname.
+int	isrtfile(char *s);
+int	issave(char *s);
+
 //if argc == 2, do this function.
-void	ft_type2(t_minirt *minirt, char *argv);
+void	ft_minirt(t_minirt *minirt, char *argv);
 
 
 //read RTfile.
@@ -164,6 +169,7 @@ int		ft_triangle_input(t_gob **firstgob, char *line);
 //出力関係 testまだ
 
 //出力計算の前準備
+void	ft_window_resize(t_minirt *minirt);
 int		ft_prepare_print(t_minirt *minirt);
 int		ft_cam_prepare(t_cam *firstcam, double width, double hight);
 void	ft_light_prepare(t_light *flight, t_cam *cam);
@@ -178,10 +184,12 @@ t_vec3	make_screan_util2(t_vec3 vd, t_vec3 vsb1);
 
 //ft_make_ray.c
 t_vec3	ft_make_ray(t_cam *cam, double x, double y);
-void	ft_show_image(t_minirt *minirt);
+
+//出力関係
+void	ft_show_image(t_minirt *rt, int *c);
 int		ft_calcu_color(t_minirt *minirt, double x, double y);
 void	ft_print_obj(t_minirt *minirt);
-
+void	ft_print_objsub(t_minirt *rt, double x, int i, t_gob *first);
 
 //aoubt each object
 double	ft_sp_color(t_gob *sp, t_cam *cam, t_light *light, t_amblight al);
@@ -204,19 +212,33 @@ t_color	ft_ambient_light(t_color c_color, t_amblight a);
 void 	ft_diffusion_light_sp(t_cam *cam, t_light *l, t_gob *sp, t_vec3 v);
 void	ft_diffusion_light_pl(t_cam *cam, t_light *l, t_gob *pl);
 void	ft_diffusion_light_cy(t_cam *cam, t_light *l, t_gob *cy);
-int	iscycross(t_gob *cy, t_vec3 lp, t_vec3 p);
+void	ft_diffusion_light_cysub(double cos2, t_cam *c, t_light *l, t_gob *cy);
+int		iscycross(t_gob *cy, t_vec3 lp, t_vec3 p);
 
 t_color	ft_set_diffuse_color1(t_color c_c, t_color l_c, t_color s_c, double cos);
-t_color	ft_set_diffuse_color2(t_color c_c, t_color l_c, t_color s_c, double cos);
+t_color	ft_set_d_color(t_color c_c, t_color l_c, t_color s_c, double cos);
 
 //影の実装
-int	ft_iscross(t_gob *ob, t_light *l, t_cam *cam);
-int iscross_sp(t_gob *sp, t_vec3 lp, t_cam *cam);
-int	iscross_pl(t_gob *pl, t_vec3 lp, t_cam *cam);
-int	iscross_sq(t_gob *sq, t_vec3 lp, t_cam *cam);
-int	iscross_cy(t_gob *cy, t_vec3 lp, t_cam *cam);
-int	iscross_tr(t_gob *tr, t_vec3 lp, t_cam *cam);
+int		ft_iscross(t_gob *ob, t_light *l, t_cam *cam);
+int 	iscross_sp(t_gob *sp, t_vec3 lp, t_cam *cam);
+int		iscross_pl(t_gob *pl, t_vec3 lp, t_cam *cam);
+int		iscross_sq(t_gob *sq, t_vec3 lp, t_cam *cam);
+int		iscross_cy(t_gob *cy, t_vec3 lp, t_cam *cam);
+int		iscross_tr(t_gob *tr, t_vec3 lp, t_cam *cam);
 double	ft_quadratic_func(double a, double b, double c);
+
+
+//shows
+
+
+//kye operation
+void	ft_use_mlx(t_minirt *rt);
+
+int	ft_key_event(int kyecode, t_minirt *rt);
+void	ft_change_camera_next(int kyecode, t_minirt *rt);
+void	ft_change_camera_prev(int kyecode, t_minirt *rt);
+void	ft_close(int keycode, t_minirt *rt);
+int	ft_click_event(int keycode, t_minirt *minirt);
 
 
 //utility functions
@@ -266,8 +288,13 @@ void	print_window_al(t_minirt *minirt);
 void	print_struct_light(t_light *fisrt);
 void	print_struct_cam(t_cam *fisrt);
 void	print_struct_gob(t_gob *firstgob);
+void	print_struct_gob_type123(t_gob *firstgob);
+void	print_struct_gob_type45(t_gob *firstgob);
 void	print_color(t_color *color);
 
-void print_prepare_cam(t_cam *first);
+void 	print_prepare_cam(t_cam *first);
 void	print_prepare_obj(t_gob *first);
+void	printpre_type123(t_gob *first);
+void	printpre_type4(t_gob *first);
+void	printpre_type5(t_gob *first);
 #endif

@@ -1,11 +1,12 @@
 #include "./miniRT.h"
 
+////calcu cy->vctoc can throw out of while
 double	ft_sp_color(t_gob *sp, t_cam *cam, t_light *l, t_amblight al)
 {
 	double	tmp1;
 	t_light	*tmp2;
 
-	sp->vctoc = ft_linear_transform(sp->p1, cam->p, -1, 1);//初期化の方でできると計算量減らせてかっこいい
+	sp->vctoc = ft_linear_transform(sp->p1, cam->p, -1, 1);
 	tmp2 = l;
 	tmp1 = ft_make_sp(cam, sp);
 	if (cam->distance > tmp1)
@@ -23,7 +24,9 @@ double	ft_sp_color(t_gob *sp, t_cam *cam, t_light *l, t_amblight al)
 	return (cam->distance);
 }
 
-//vray投げるようにすれば，crossingでも使える．
+//if argument change cam to vray, can use iscross func
+//size of vray is allways 1, so a == 1;
+//c dosen't change so, can throw out of while.
 double	ft_make_sp(t_cam *cam, t_gob *sp)
 {
 	double	a;
@@ -31,9 +34,9 @@ double	ft_make_sp(t_cam *cam, t_gob *sp)
 	double	c;
 	double	t;
 
-	a = 1;//vrayは常に大きさ1なので変わらない．これのおかげで，距離交点までの距離が正しく出せる．
-	b = ft_inner_product(cam->vray, sp->vctoc); //vrayに合わせて変わる
-	c = ft_v_d_len(sp->vctoc) - sp->d * sp->d / 4;//変わらない
+	a = 1;
+	b = ft_inner_product(cam->vray, sp->vctoc);
+	c = ft_v_d_len(sp->vctoc) - sp->d * sp->d / 4;
 	t = ft_quadratic_func(a, b, c);
 	return (t);
 }

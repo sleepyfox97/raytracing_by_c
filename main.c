@@ -1,6 +1,5 @@
 #include "./miniRT.h"
 
-
 //argv[1]確認して，読み取りファイルをdefineする．
 //00が頭にくる場合すべてatolではねるようにしたい．
 //argv[1]が.rtで終わるファイルかを確認する．vnoが000の場合はerrorケース
@@ -8,58 +7,57 @@
 //最後に全部freeする．
 //カメラが一個もない時のerror処理．
 //A.Rが一つしかないかを確認してerror処理．
-//
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_minirt	minirt;
+	t_minirt	rt;
 	int			i;
 
 	i = 0;
-	ft_initialize_minirt(&minirt);
-	if (argc != 2 && argc != 3)
+	ft_initialize_minirt(&rt);
+	if (argc == 2)
 	{
-		printf("Error\n\nargument error.\nArguments have to be 2 or 3.\n");
-		return (0);
-	}
-	else if(argc == 2) 
-	{
-		//if (is_rtfile(argv[1]))
-			//return (printf("Errpr\n\nthe file name is not good."));
-		ft_type2(&minirt, argv[1]);
-
-		mlx_hook(win, X_EVENT_KEY_PRESS, 1L<<0, &key_press, &param);
-
-		mlx_loop(mlx_ptr);
-		ft_show_image(minirt);
-		printf("if this comment shows, You can write good code\n");
+		if (!isrtfile(argv[1]))
+			return (printf("Error\n\nthe file name should end \".rt\"."));
+		ft_minirt(&rt, argv[1]);
+		rt.win = mlx_new_window(rt.mlx, rt.width, rt.hight, "miniRT");
+		ft_use_mlx(&rt);
 	}
 	else if (argc == 3)
 	{
-		printf("I didn't make argc == 3 program\n");
+		if (!isrtfile(argv[1]))
+			return (printf("Error\n\nthe file name should end \".rt\"."));
+		if (!issave(argv[2]))
+			return (printf("Error\n\nyou have to write \"--save\""));
+		ft_minirt(&rt, argv[1]);
+		//bmpファイル作る．
 	}
+	else
+		printf("Error\n\n\nArguments have to be 2 or 3.\n");
 	return (0);
 }
 
 //3:free elements
-void	ft_type2(t_minirt *minirt, char *argv)
+//A,R,cがない時，A，Rが二つある時のerror処理
+//print_prepare_cam(minirt->firstcam);
+//print_prepare_obj(minirt->firstgob);
+void	ft_minirt(t_minirt *minirt, char *argv)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	i = ft_get_info(minirt, argv);//A,R,cがない時，A，Rが二つある時のerror処理
+	i = ft_get_info(minirt, argv);
 	if (i == 0)
 		return ;
-	else if (i == 1)
+	if (i == 1)
 	{
 		print_minirt_struct(minirt);
-		if(!ft_prepare_print(minirt))
-			return ft_clear_minirt(minirt);
-		print_prepare_cam(minirt->firstcam);
-		print_prepare_obj(minirt->firstgob);
+		if (!ft_prepare_print(minirt))
+		{
+			ft_clear_minirt(minirt);
+			return ;
+		}
 		ft_print_obj(minirt);
-
 	}
-	//free everything.
 	return ;
 }
 
@@ -71,4 +69,5 @@ void	ft_initialize_minirt(t_minirt *minirt)
 	minirt->al.flag = -1;
 	minirt->width = -1;
 	minirt->hight = -1;
+	return ;
 }

@@ -22,8 +22,7 @@ double	ft_sq_color(t_gob *sq, t_cam *cam, t_light *l, t_amblight al)
 	return (cam->distance);
 }
 
-
-//正方形の中心から，交点だと思ってる場所に対して伸ばした，ベクトルと基底ベクトルとの
+//like make screan, make two base vector. sq->d is half of length
 double	ft_make_sq(t_gob *sq, t_vec3 vray, t_vec3 camp)
 {
 	t_vec3	tmp1;
@@ -38,7 +37,7 @@ double	ft_make_sq(t_gob *sq, t_vec3 vray, t_vec3 camp)
 	tmp1 = ft_linear_transform(vray, camp, distance, 1);
 	tmp2 = ft_linear_transform(tmp1, sq->p1, 1, -1);
 	a = ft_inner_product(tmp2, sq->p2);
-	if (a < (-1) * sq->d || sq->d  < a)
+	if (a < (-1) * sq->d || sq->d < a)
 		return (INFINITY);
 	b = ft_inner_product(tmp2, sq->p3);
 	if (b < (-1) * sq->d || sq->d < b)

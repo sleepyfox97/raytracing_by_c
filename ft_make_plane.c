@@ -1,6 +1,6 @@
 #include "./miniRT.h"
 
-//rayの方向とplの方向が平行になったら平面映らなくなるから注意．
+//if vray and vno is parallel, we can't see plane
 double	ft_pl_color(t_gob *pl, t_cam *cam, t_light *l, t_amblight al)
 {
 	double	t;
@@ -23,7 +23,8 @@ double	ft_pl_color(t_gob *pl, t_cam *cam, t_light *l, t_amblight al)
 	return (cam->distance);
 }
 
-//vrayは必ず正規化されてないとだめ
+//size of vray is always 1.
+//calcu cy->vctoc can throw out of while
 double	ft_make_pl(t_gob *pl, t_vec3 vray, t_vec3 camp)
 {
 	double	tmp1;
@@ -31,7 +32,7 @@ double	ft_make_pl(t_gob *pl, t_vec3 vray, t_vec3 camp)
 	t_vec3	vptoc;
 
 	tmp1 = ft_inner_product(vray, pl->vno);
-	vptoc = ft_linear_transform(camp, pl->p1, -1, 1);//ここじゃなくて，準備段階で計算できる．
+	vptoc = ft_linear_transform(camp, pl->p1, -1, 1);
 	tmp2 = ft_inner_product(vptoc, pl->vno);
 	if (tmp1 == 0)
 		return (INFINITY);
