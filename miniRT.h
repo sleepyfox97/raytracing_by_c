@@ -9,13 +9,14 @@
 # include <stdint.h>
 # include <limits.h>
 
+//for minilibx
 # include <X11/Xlib.h>
 # include <sys/ipc.h>
 # include <sys/shm.h>
 # include <X11/extensions/XShm.h>
 # include "./minilibx-linux/mlx.h"
 
-
+//kye number
 # define X_EVENT_KEY_PRESS		2
 # define K_ESC		65307
 # define K_UP		65362
@@ -35,6 +36,7 @@ typedef struct s_vec3
 	double	z;
 }	t_vec3;
 
+//RGB color
 typedef struct s_color
 {
 	double	r;
@@ -50,32 +52,34 @@ typedef struct s_color
 //prev means before camera struct and next means next camera struct.
 //image: this varinable has every pixel color informatin,
 //so, use pixel put to this varinable, we can see the window view.
+
+// imageとともに，width * hightでmalloc
 typedef struct s_cam
 {
-	int		cnum;
-	t_vec3	p;
-	t_vec3	vd;
-	double	fov;
-	t_vec3	vsb1;
-	t_vec3	vsb2;
-	t_vec3	vptos;
-	t_vec3	vray;
+	int				cnum;
+	t_vec3			p;
+	t_vec3			vd;
+	double			fov;
+	t_vec3			vsb1;
+	t_vec3			vsb2;
+	t_vec3			vptos;
+	t_vec3			vray;
 	struct s_cam	*prev;
 	struct s_cam	*next;
-	double	distance; // imageとともに，width * hightでmalloc
-	t_color	tmpcolor;
-	int		*image;
+	double			distance;
+	t_color			tmpcolor;
+	int				*image;
 }	t_cam;
 
 //p:place of light, r:brightneess of light ratio
 //vctol: vector from cam to light, you have to chang this for each camera
 typedef struct s_light
 {
-	int		lnum;
-	t_vec3	p;
-	double	r;
-	t_color	color;
-	t_vec3	vctol;
+	int				lnum;
+	t_vec3			p;
+	double			r;
+	t_color			color;
+	t_vec3			vctol;
 	struct s_light	*next;
 }	t_light;
 
@@ -94,19 +98,19 @@ typedef struct s_amblight
 //use h onluy for cylinder hight.
 typedef struct s_gob
 {
-	int		type;
-	int		obnum;
-	t_vec3	p1;
-	t_vec3	p2;
-	t_vec3	p3;
-	t_vec3	vno;
-	t_vec3	vtb1;
-	t_vec3	vtb2;
-	t_vec3	vtb3;
-	double	d;
-	double	h;
-	t_color	color;
-	t_vec3	vctoc;//球の場合，球の中心からカメラへ向かうベクトル
+	int				type;
+	int				obnum;
+	t_vec3			p1;
+	t_vec3			p2;
+	t_vec3			p3;
+	t_vec3			vno;
+	t_vec3			vtb1;
+	t_vec3			vtb2;
+	t_vec3			vtb3;
+	double			d;
+	double			h;
+	t_color			color;
+	t_vec3			vctoc;
 	struct s_gob	*prev;
 	struct s_gob	*next;
 }	t_gob;
@@ -128,25 +132,22 @@ typedef struct s_minirt
 //in main file
 //initialize minirt struct;
 void	ft_initialize_minirt(t_minirt *minirt);
-//check filname.
-int	isrtfile(char *s);
-int	issave(char *s);
-
-//if argc == 2, do this function.
+//maka int *image;
 void	ft_minirt(t_minirt *minirt, char *argv);
 
+//check filname.
+int		isrtfile(char *s);
+int		issave(char *s);
 
 //read RTfile.
-//in read RTfile1　読み取りができるとこまでした，read RTfile2以降の関数との組み合わせはまだ．
+//in read RTfile1
 int		ft_get_info(t_minirt *minirt, char *argv);
 char	*ft_read_rtfile(int fd);
 int		ft_input_info(t_minirt *minirt, char **line);
 int		ft_switch_inputtype(t_minirt *minirt, char *line);
-
 //in read RTfile2(util functions to get each information)
 int		get_pv(char *line, int i, t_vec3 *v);
 int		get_two_vec(char *line, int i, t_vec3 *v1, t_vec3 *v2);
-int		get_three_vec(char *line, int i, t_vec3 *v1, t_vec3 *v2, t_vec3 *v3);
 int		get_fov(char *line, int i, double *fov);
 int		ft_get_color(char *line, int i, t_color *color);
 //in read RTfile3(for camera, window, light)
@@ -165,10 +166,7 @@ int		ft_cylinder_input(t_gob **firstgob, char *line);
 int		ft_input_SqAndCy_sub(t_gob *new, char *line, int i);
 int		ft_triangle_input(t_gob **firstgob, char *line);
 
-
-//出力関係 testまだ
-
-//出力計算の前準備
+//prepare
 void	ft_window_resize(t_minirt *minirt);
 int		ft_prepare_print(t_minirt *minirt);
 int		ft_cam_prepare(t_cam *firstcam, double width, double hight);
@@ -185,12 +183,13 @@ t_vec3	make_screan_util2(t_vec3 vd, t_vec3 vsb1);
 //ft_make_ray.c
 t_vec3	ft_make_ray(t_cam *cam, double x, double y);
 
-//出力関係
+//output color
 void	ft_show_image(t_minirt *rt, int *c);
+
+//calcu color
 int		ft_calcu_color(t_minirt *minirt, double x, double y);
 void	ft_print_obj(t_minirt *minirt);
 void	ft_print_objsub(t_minirt *rt, double x, int i, t_gob *first);
-
 //aoubt each object
 double	ft_sp_color(t_gob *sp, t_cam *cam, t_light *light, t_amblight al);
 double	ft_make_sp(t_cam *cam, t_gob *sp);
@@ -200,49 +199,44 @@ double	ft_sq_color(t_gob *sq, t_cam *cam, t_light *l, t_amblight al);
 double	ft_make_sq(t_gob *sq, t_vec3 vray, t_vec3 camp);
 double	ft_cy_color(t_gob *tr, t_cam *cam, t_light *l, t_amblight al);
 double	ft_make_cy(t_gob *cy, t_vec3 vray, t_vec3 camp);
-double ft_make_cy_sub(double a, double b, double c, t_gob *cy);
+double	ft_make_cy_sub(double a, double b, double c, t_gob *cy);
 double	ft_tr_color(t_gob *tr, t_cam *cam, t_light *l, t_amblight al);
 double	ft_make_tr(t_gob *tr, t_vec3 vray, t_vec3 camp);
+t_color	ft_set_color(double r, double g, double b);
 
-
-
-t_color ft_set_color(double r, double g, double b);
 t_color	ft_ambient_light(t_color c_color, t_amblight a);
 //light
-void 	ft_diffusion_light_sp(t_cam *cam, t_light *l, t_gob *sp, t_vec3 v);
+void	ft_diffusion_light_sp(t_cam *cam, t_light *l, t_gob *sp, t_vec3 v);
 void	ft_diffusion_light_pl(t_cam *cam, t_light *l, t_gob *pl);
 void	ft_diffusion_light_cy(t_cam *cam, t_light *l, t_gob *cy);
 void	ft_diffusion_light_cysub(double cos2, t_cam *c, t_light *l, t_gob *cy);
 int		iscycross(t_gob *cy, t_vec3 lp, t_vec3 p);
 
-t_color	ft_set_diffuse_color1(t_color c_c, t_color l_c, t_color s_c, double cos);
+t_color	ft_set_diffuse_color1(t_color c_c,
+			t_color l_c, t_color s_c, double cos);
 t_color	ft_set_d_color(t_color c_c, t_color l_c, t_color s_c, double cos);
 
-//影の実装
+//shadow
 int		ft_iscross(t_gob *ob, t_light *l, t_cam *cam);
-int 	iscross_sp(t_gob *sp, t_vec3 lp, t_cam *cam);
+int		iscross_sp(t_gob *sp, t_vec3 lp, t_cam *cam);
 int		iscross_pl(t_gob *pl, t_vec3 lp, t_cam *cam);
 int		iscross_sq(t_gob *sq, t_vec3 lp, t_cam *cam);
 int		iscross_cy(t_gob *cy, t_vec3 lp, t_cam *cam);
 int		iscross_tr(t_gob *tr, t_vec3 lp, t_cam *cam);
 double	ft_quadratic_func(double a, double b, double c);
 
-
-//shows
-
+//make bmpfile
+int		make_bmpfile(t_minirt *rt);
 
 //kye operation
 void	ft_use_mlx(t_minirt *rt);
-
-int	ft_key_event(int kyecode, t_minirt *rt);
+int		ft_key_event(int kyecode, t_minirt *rt);
 void	ft_change_camera_next(int kyecode, t_minirt *rt);
 void	ft_change_camera_prev(int kyecode, t_minirt *rt);
 void	ft_close(int keycode, t_minirt *rt);
-int	ft_click_event(int keycode, t_minirt *minirt);
-
+int		ft_click_event(t_minirt *minirt);
 
 //utility functions
-
 //function in libft1
 int		ft_isspace(char c);
 int		ft_atol(char *s, int i, double *result);
@@ -277,8 +271,6 @@ int		ft_isnormal(t_vec3 *v);
 t_vec3	ft_gramschmidt_1(t_vec3 v1, t_vec3 v2);
 t_vec3	ft_gramschmidt_2(t_vec3 v1, t_vec3 v2, t_vec3 v3);
 
-
-
 //error stdout
 void	ft_put_rtfile_error(char **line, int i);
 
@@ -291,8 +283,7 @@ void	print_struct_gob(t_gob *firstgob);
 void	print_struct_gob_type123(t_gob *firstgob);
 void	print_struct_gob_type45(t_gob *firstgob);
 void	print_color(t_color *color);
-
-void 	print_prepare_cam(t_cam *first);
+void	print_prepare_cam(t_cam *first);
 void	print_prepare_obj(t_gob *first);
 void	printpre_type123(t_gob *first);
 void	printpre_type4(t_gob *first);

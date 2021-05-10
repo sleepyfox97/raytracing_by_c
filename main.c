@@ -7,12 +7,14 @@
 //最後に全部freeする．
 //カメラが一個もない時のerror処理．
 //A.Rが一つしかないかを確認してerror処理．
+//24bit mapを作る．
+//RGBの順序で色の値が記録される．
+//行データをpaddingして4byteの境界にそろえる必要がある．
+
 int	main(int argc, char *argv[])
 {
 	t_minirt	rt;
-	int			i;
 
-	i = 0;
 	ft_initialize_minirt(&rt);
 	if (argc == 2)
 	{
@@ -29,7 +31,8 @@ int	main(int argc, char *argv[])
 		if (!issave(argv[2]))
 			return (printf("Error\n\nyou have to write \"--save\""));
 		ft_minirt(&rt, argv[1]);
-		//bmpファイル作る．
+		make_bmpfile(&rt);
+		exit(0);
 	}
 	else
 		printf("Error\n\n\nArguments have to be 2 or 3.\n");
@@ -47,7 +50,10 @@ void	ft_minirt(t_minirt *minirt, char *argv)
 	i = 0;
 	i = ft_get_info(minirt, argv);
 	if (i == 0)
+	{
+		exit (0);
 		return ;
+	}
 	if (i == 1)
 	{
 		print_minirt_struct(minirt);

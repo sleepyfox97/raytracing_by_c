@@ -21,6 +21,7 @@ void	ft_change_camera_next(int kyecode, t_minirt *rt)
 void	ft_change_camera_prev(int kyecode, t_minirt *rt)
 {
 	rt->firstcam = rt->firstcam->prev;
+	mlx_clear_window(rt->mlx, rt->win);
 	ft_use_mlx(rt);
 	return ;
 }
@@ -29,6 +30,7 @@ void	ft_change_camera_prev(int kyecode, t_minirt *rt)
 void	ft_close(int keycode, t_minirt *rt)
 {
 	mlx_destroy_window(rt->mlx, rt->win);
+	mlx_clear_window(rt->mlx, rt->win);
 	exit(0);
 	return ;
 }
@@ -36,7 +38,7 @@ void	ft_close(int keycode, t_minirt *rt)
 //clickでwindow閉じるときの関数
 //clickで終了するとなぜかsegfoが起こる．escpだとおこらない．
 //free everything?
-int	ft_click_event(int keycode, t_minirt *rt)
+int	ft_click_event(t_minirt *rt)
 {
 	mlx_destroy_window(rt->mlx, rt->win);
 	exit(0);
