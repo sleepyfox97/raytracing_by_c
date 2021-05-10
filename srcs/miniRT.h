@@ -14,7 +14,7 @@
 # include <sys/ipc.h>
 # include <sys/shm.h>
 # include <X11/extensions/XShm.h>
-# include "./minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
 
 //kye number
 # define X_EVENT_KEY_PRESS		2
@@ -231,9 +231,9 @@ int		make_bmpfile(t_minirt *rt);
 //kye operation
 void	ft_use_mlx(t_minirt *rt);
 int		ft_key_event(int kyecode, t_minirt *rt);
-void	ft_change_camera_next(int kyecode, t_minirt *rt);
-void	ft_change_camera_prev(int kyecode, t_minirt *rt);
-void	ft_close(int keycode, t_minirt *rt);
+void	ft_change_camera_next(t_minirt *rt);
+void	ft_change_camera_prev(t_minirt *rt);
+void	ft_close(t_minirt *rt);
 int		ft_click_event(t_minirt *minirt);
 
 //utility functions

@@ -3,22 +3,22 @@
 int	ft_key_event(int kyecode, t_minirt *rt)
 {
 	if (kyecode == K_ESC)
-		ft_close(kyecode, rt);
+		ft_close(rt);
 	if (kyecode == K_LEFT)
-		ft_change_camera_next(kyecode, rt);
+		ft_change_camera_next(rt);
 	if (kyecode == K_RIGHT)
-		ft_change_camera_prev(kyecode, rt);
+		ft_change_camera_prev(rt);
 	return (0);
 }
 
-void	ft_change_camera_next(int kyecode, t_minirt *rt)
+void	ft_change_camera_next(t_minirt *rt)
 {
 	rt->firstcam = rt->firstcam->next;
 	ft_use_mlx(rt);
 	return ;
 }
 
-void	ft_change_camera_prev(int kyecode, t_minirt *rt)
+void	ft_change_camera_prev(t_minirt *rt)
 {
 	rt->firstcam = rt->firstcam->prev;
 	mlx_clear_window(rt->mlx, rt->win);
@@ -27,7 +27,7 @@ void	ft_change_camera_prev(int kyecode, t_minirt *rt)
 }
 
 //free everything?
-void	ft_close(int keycode, t_minirt *rt)
+void	ft_close(t_minirt *rt)
 {
 	mlx_destroy_window(rt->mlx, rt->win);
 	mlx_clear_window(rt->mlx, rt->win);
