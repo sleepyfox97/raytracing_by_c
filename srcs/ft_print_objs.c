@@ -10,14 +10,19 @@ void	ft_print_obj(t_minirt *rt)
 	tmp = rt->firstgob;
 	while (1)
 	{
-		i = 0;
-		ft_light_prepare(rt->firstlight, rt->firstcam);
-		while (i < (int)rt->width)
+		if (isin_sphere(rt->firstcam, rt->firstgob))
+			ft_set_black(rt->firstcam->image, rt->width, rt->hight);
+		else
 		{
-			x = i - rt->width / 2;
-			ft_print_objsub(rt, x, i, tmp);
-			ft_progress(rt, i, rt->firstcam);
-			i++;
+			i = 0;
+			ft_light_prepare(rt->firstlight, rt->firstcam);
+			while (i < (int)rt->width)
+			{
+				x = i - rt->width / 2;
+				ft_print_objsub(rt, x, i, tmp);
+				ft_progress(rt, i, rt->firstcam);
+				i++;
+			}
 		}
 		if (rt->firstcam->next->cnum == 1)
 			break ;

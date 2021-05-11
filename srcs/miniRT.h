@@ -295,4 +295,7 @@ void	printpre_type5(t_gob *first);
 
 //progress show
 void	ft_progress(t_minirt *rt, int i, t_cam *cam);
+
+int		isin_sphere(t_cam *c, t_gob *ob);
+void	ft_set_black(int *image, double width, double hight);
 #endif
