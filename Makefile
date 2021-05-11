@@ -16,7 +16,8 @@ SRCS	=	srcs/main.c srcs/bmp.c srcs/ft_check_filename.c srcs/ft_error1.c srcs/ft_
 			srcs/ft_windowsize.c\
 			srcs/libft1.c srcs/libft2.c srcs/libft3.c srcs/libft4.c\
 			srcs/ft_vector_utli1.c srcs/ft_vector_utli2.c \
-			srcs/ft_calcu_progress.c
+			srcs/ft_calcu_progress.c \
+			srcs/ft_in_sphere.c
 
 OBJS = $(SRCS:.c=.o)
 
