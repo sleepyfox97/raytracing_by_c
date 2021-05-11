@@ -1,6 +1,5 @@
 #include "./miniRT.h"
 
-//minirt->firstgob = tmpの部分が無くてもいいかも
 void	ft_print_obj(t_minirt *rt)
 {
 	int		i;

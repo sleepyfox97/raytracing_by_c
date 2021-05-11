@@ -44,24 +44,24 @@ double	ft_make_cy(t_gob *cy, t_vec3 vray, t_vec3 camp)
 
 double	ft_make_cy_sub(double a, double b, double c, t_gob *cy)
 {
-	double	tmp;
 	double	d;
 	double	t;
 
-	tmp = (1 - a * a);
-	d = b * b - c * tmp;
-	if (d < 0 || tmp == 0)
+	d = b * b - c * (1 - a * a);
+	if (d < 0 || (1 - a * a) == 0)
 		return (INFINITY);
-	t = ft_quadratic_func(tmp, b, c);
+	t = ft_quadratic_func((1 - a * a), b, c);
 	if (0 < t && t < INFINITY)
 	{
 		cy->p2.y = t * a + ft_inner_product(cy->vctoc, cy->vno);
 		cy->p2.x = 1;
+		if (c < 0)
+			cy->p2.x = 2;
 		if (0 <= cy->p2.y && cy->p2.y <= cy->h)
 			return (t);
 		else if (c >= 0)
 		{
-			t = t + 2 * sqrt(d) / tmp;
+			t = t + 2 * sqrt(d) / (1 - a * a);
 			cy->p2.y = t * a + ft_inner_product(cy->vctoc, cy->vno);
 			cy->p2.x = 2;
 			if (0 <= cy->p2.y && cy->p2.y <= cy->h)
