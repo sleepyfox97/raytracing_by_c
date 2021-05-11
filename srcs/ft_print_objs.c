@@ -16,6 +16,7 @@ void	ft_print_obj(t_minirt *rt)
 		{
 			x = i - rt->width / 2;
 			ft_print_objsub(rt, x, i, tmp);
+			ft_progress(rt, i, rt->firstcam);
 			i++;
 		}
 		if (rt->firstcam->next->cnum == 1)

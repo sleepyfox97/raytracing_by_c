@@ -40,7 +40,7 @@ void	ft_diffusion_light_cysub(double cos2, t_cam *c, t_light *l, t_gob *cy)
 
 //計算の精度の問題で，0とinfあたりをぐるぐるしてしまい，正確にtの値が取れていない．
 //本来，infの場所が，なぜか，0前後で判断されてしまっている．(実際，dそのものから，出してるからそうなる)
-//lightの場所から伸ばした，直線が，二箇所と交わるかの判断をする方で考えることにする？
+//丸め誤差の関係上生じてしまうっぽい
 int	iscycross(t_gob *cy, t_vec3 lp, t_vec3 p)
 {
 	t_vec3	tmp;
@@ -53,7 +53,7 @@ int	iscycross(t_gob *cy, t_vec3 lp, t_vec3 p)
 	l = sqrt(ft_v_d_len(tmp));
 	tmp = ft_make_unitvec(tmp);
 	t = ft_make_cy(cy, tmp, lp);
-	if (0 < t && t < l - 0.00001)
+	if (0.00000000001 < t && t < l - 0.00000000001)
 		return (1);
 	return (0);
 }

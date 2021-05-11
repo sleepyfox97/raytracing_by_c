@@ -37,10 +37,10 @@ int	ft_windowinfo_input(t_minirt *minirt, char *line)
 	if (minirt->width != -1 || minirt->hight != -1)
 		return (0);
 	i = ft_atol(line, i, &(minirt->width));
-	if (i == 0)
+	if (i == 0 || minirt->width <= 0)
 		return (0);
 	i = ft_atol(line, i, &(minirt->hight));
-	if (i == 0)
+	if (i == 0 || minirt->hight <= 0)
 		return (0);
 	if (line[i] != '\0' && line[i] != 13)
 		return (0);

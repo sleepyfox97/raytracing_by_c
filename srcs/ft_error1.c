@@ -18,3 +18,24 @@ void	ft_put_rtfile_error(char **line, int i)
 		printf("4 : check end of each line is really \"\\n\"");
 	}
 }
+
+void	ft_put_resolution_error(void)
+{
+	printf("\x1b[41m  \x1b[37m===Error===\x1b[39m  \x1b[49m\n");
+	printf("type       : \x1b[33m.rt file error\033[m\n");
+	printf("there is no Resolution line. Check rt file again.\n");
+}
+
+void	ft_put_ambient_error(void)
+{
+	printf("\x1b[41m  \x1b[37m===Error===\x1b[39m  \x1b[49m\n");
+	printf("type       : \x1b[33m.rt file error\033[m\n");
+	printf("there is no Ambient light line. Check rt file again.\n");
+}
+
+void	ft_put_camera_error(void)
+{
+	printf("\x1b[41m  \x1b[37m===Error===\x1b[39m  \x1b[49m\n");
+	printf("type       : \x1b[33m.rt file error\033[m\n");
+	printf("there is no Camera line. Check rt file again.\n");
+}

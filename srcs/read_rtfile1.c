@@ -14,6 +14,8 @@ int	ft_get_info(t_minirt *minirt, char *argv)
 	free (line);
 	if (!ft_input_info(minirt, sp_line))
 		return (0);
+	if (!ft_check_input(minirt))
+		exit (0);
 	return (1);
 }
 
@@ -84,5 +86,28 @@ int	ft_switch_inputtype(t_minirt *minirt, char *line)
 		j = ft_object_input(minirt, line);
 	if (j == 0)
 		return (0);
+	return (1);
+}
+
+int	ft_check_input(t_minirt *minirt)
+{
+	if (minirt->width == -1 || minirt->hight == -1)
+	{
+		ft_put_resolution_error();
+		ft_clear_minirt(minirt);
+		return (0);
+	}
+	else if (minirt->al.flag == -1)
+	{
+		ft_put_ambient_error();
+		ft_clear_minirt(minirt);
+		return (0);
+	}
+	else if (minirt->firstcam == NULL)
+	{
+		ft_put_camera_error();
+		ft_clear_minirt(minirt);
+		return (0);
+	}
 	return (1);
 }

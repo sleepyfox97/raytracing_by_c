@@ -145,6 +145,7 @@ int		ft_get_info(t_minirt *minirt, char *argv);
 char	*ft_read_rtfile(int fd);
 int		ft_input_info(t_minirt *minirt, char **line);
 int		ft_switch_inputtype(t_minirt *minirt, char *line);
+int		ft_check_input(t_minirt *minirt);
 //in read RTfile2(util functions to get each information)
 int		get_pv(char *line, int i, t_vec3 *v);
 int		get_two_vec(char *line, int i, t_vec3 *v1, t_vec3 *v2);
@@ -273,6 +274,9 @@ t_vec3	ft_gramschmidt_2(t_vec3 v1, t_vec3 v2, t_vec3 v3);
 
 //error stdout
 void	ft_put_rtfile_error(char **line, int i);
+void	ft_put_resolution_error(void);
+void	ft_put_ambient_error(void);
+void	ft_put_camera_error(void);
 
 //for test
 void	print_minirt_struct(t_minirt *minirt);
@@ -288,4 +292,7 @@ void	print_prepare_obj(t_gob *first);
 void	printpre_type123(t_gob *first);
 void	printpre_type4(t_gob *first);
 void	printpre_type5(t_gob *first);
+
+//progress show
+void	ft_progress(t_minirt *rt, int i, t_cam *cam);
 #endif

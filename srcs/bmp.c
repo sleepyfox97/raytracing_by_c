@@ -87,7 +87,7 @@ int	make_bmpfile(t_minirt *rt)
 		rt->firstcam =rt->firstcam->next;
 		if (rt->firstcam->cnum == tmp)
 			break ;
-		file[2] = 'a' + 1;
+		file[2] = file[2] + 1;
 	}
 	return (1);
 }

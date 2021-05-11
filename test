@@ -1,0 +1,89 @@
+[36m===this is window information====[m
+width = 1024.000000
+hight = 800.000000
+
+[36m======this is ambient light======[m
+ambient light ratio = [33m0.100000[m
+R : [31m255.000000[39m
+G : [32m255.000000[39m
+B : [34m255.000000[39m
+
+[33m=========This is 1 light=========[m
+light place 
+v.x=15.000000, v.y=15.000000, v.z=-15.000000
+
+light strenght ratio = [33m0.900000[m
+
+R : [31m255.000000[39m
+G : [32m255.000000[39m
+B : [34m255.000000[39m
+
+[35m========This is 1 camera=========[m
+camera place 
+v.x=0.000000, v.y=3.000000, v.z=-20.000000
+
+normalized orientation vector of camera
+v.x=0.000000, v.y=-0.196116, v.z=0.980581
+
+camera's fov = 60.000000
+
+[35m========This is 2 camera=========[m
+camera place 
+v.x=20.000000, v.y=3.000000, v.z=0.000000
+
+normalized orientation vector of camera
+v.x=-1.000000, v.y=0.000000, v.z=0.000000
+
+camera's fov = 60.000000
+
+[35m========This is 3 camera=========[m
+camera place 
+v.x=-20.000000, v.y=3.000000, v.z=0.000000
+
+normalized orientation vector of camera
+v.x=1.000000, v.y=0.000000, v.z=0.000000
+
+camera's fov = 60.000000
+
+[35m========This is 4 camera=========[m
+camera place 
+v.x=0.000000, v.y=20.000000, v.z=0.000000
+
+normalized orientation vector of camera
+v.x=0.000000, v.y=-1.000000, v.z=0.000000
+
+camera's fov = 60.000000
+
+[32m=======This is 1 object=======[m
+type = 2
+this is plane
+
+coordinates of point on the plane
+v.x=0.000000, v.y=-4.000000, v.z=0.000000
+
+normalized orientation vector
+v.x=0.000000, v.y=1.000000, v.z=0.000000
+R : [31m255.000000[39m
+G : [32m255.000000[39m
+B : [34m0.000000[39m
+
+[32m=======This is 2 object=======[m
+type = 2
+this is plane
+
+coordinates of point on the plane
+v.x=0.000000, v.y=-4.000000, v.z=0.000000
+
+normalized orientation vector
+v.x=0.000000, v.y=1.000000, v.z=0.000000
+R : [31m255.000000[39m
+G : [32m255.000000[39m
+B : [34m0.000000[39m
+[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m
+camera 1 calculattion done
+[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m
+camera 2 calculattion done
+[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m
+camera 3 calculattion done
+[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m
+camera 4 calculattion done

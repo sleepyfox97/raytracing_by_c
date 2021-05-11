@@ -39,7 +39,7 @@ int	get_fov(char *line, int i, double *fov)
 	if (!ft_isspace(line[i]))
 		return (0);
 	i = ft_atof(line, i, fov);
-	if (line[i] != '\0' || (0 > *fov || *fov > 180))
+	if (line[i] != '\0' || (0 >= *fov || *fov >= 180))
 		return (0);
 	return (i);
 }
