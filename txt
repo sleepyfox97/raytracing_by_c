@@ -79,6 +79,92 @@ v.x=0.000000, v.y=1.000000, v.z=0.000000
 R : [31m255.000000[39m
 G : [32m255.000000[39m
 B : [34m0.000000[39m
+
+[32m=======This is 3 object=======[m
+type = 3
+this is square
+
+coordinates of point on the square
+v.x=0.000000, v.y=-2.000000, v.z=-3.000000
+
+normalized orientation vector
+v.x=0.577350, v.y=0.577350, v.z=-0.577350
+
+side size = 3.000000
+R : [31m0.000000[39m
+G : [32m176.000000[39m
+B : [34m176.000000[39m
+
+[32m=======This is 4 object=======[m
+type = 3
+this is square
+
+coordinates of point on the square
+v.x=5.000000, v.y=-2.000000, v.z=-3.000000
+
+normalized orientation vector
+v.x=0.577350, v.y=-0.577350, v.z=0.577350
+
+side size = 3.000000
+R : [31m100.000000[39m
+G : [32m0.000000[39m
+B : [34m176.000000[39m
+
+[32m=======This is 5 object=======[m
+type = 3
+this is square
+
+coordinates of point on the square
+v.x=0.000000, v.y=-2.000000, v.z=-3.000000
+
+normalized orientation vector
+v.x=0.577350, v.y=0.577350, v.z=-0.577350
+
+side size = 3.000000
+R : [31m0.000000[39m
+G : [32m176.000000[39m
+B : [34m176.000000[39m
+
+[32m=======This is 6 object=======[m
+type = 3
+this is square
+
+coordinates of point on the square
+v.x=5.000000, v.y=-2.000000, v.z=-3.000000
+
+normalized orientation vector
+v.x=0.577350, v.y=-0.577350, v.z=0.577350
+
+side size = 3.000000
+R : [31m100.000000[39m
+G : [32m0.000000[39m
+B : [34m176.000000[39m
+
+[32m=======This is 7 object=======[m
+type = 5
+this is triangle
+coordinates of point on the square
+v.x=-3.000000, v.y=-5.000000, v.z=-3.000000
+coordinates of point on the square
+v.x=3.000000, v.y=-5.000000, v.z=-3.000000
+coordinates of point on the square
+v.x=0.000000, v.y=5.000000, v.z=0.000000
+R : [31m255.000000[39m
+G : [32m255.000000[39m
+B : [34m255.000000[39m
+
+[32m=======This is 8 object=======[m
+type = 5
+this is triangle
+coordinates of point on the square
+v.x=-3.000000, v.y=-5.000000, v.z=-3.000000
+coordinates of point on the square
+v.x=3.000000, v.y=-5.000000, v.z=-3.000000
+coordinates of point on the square
+v.x=0.000000, v.y=5.000000, v.z=0.000000
+R : [31m255.000000[39m
+G : [32m255.000000[39m
+B : [34m255.000000[39m
 [36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m
 camera 1 calculattion done
 [36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m[36m>[39m
