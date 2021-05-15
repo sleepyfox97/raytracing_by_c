@@ -62,7 +62,7 @@ int	ft_light_input(t_light **firstlight, char *line)
 	if (i == 0 || !ft_isspace(line[i]))
 		return (ft_safe_free1(new));
 	i = ft_atof(line, i, &(new->r));
-	if (i == 0 || !ft_isspace(line[i]) || ((new->r) < 0 && 1 < (new->r)))
+	if (i == 0 || !ft_isspace(line[i]) || ((new->r) < 0 || 1 < (new->r)))
 		return (ft_safe_free1(new));
 	i = ft_get_color(line, i, &(new->color));
 	if (i == 0 || (line[i] != '\0' && line[i] != 13))
@@ -85,7 +85,7 @@ int	ft_amblight_input(t_amblight *al, char *line)
 	if (!ft_isspace(line[i]))
 		return (0);
 	i = ft_atof(line, i, &(al->r));
-	if (i == 0 || !ft_isspace(line[i]))
+	if (i == 0 || !ft_isspace(line[i]) || (al->r) < 0 || 1 < (al->r))
 		return (0);
 	i = ft_get_color(line, i, &(al->color));
 	if (i == 0 || (line[i] != '\0' && line[i] != 13))
