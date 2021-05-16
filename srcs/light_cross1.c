@@ -1,6 +1,5 @@
 #include "./miniRT.h"
 
-//cylinderの時だけ，自分自身のためにできる影の考慮をする必要あり．
 int	ft_iscross(t_gob *ob, t_light *l, t_cam *cam)
 {
 	int	i;
@@ -27,11 +26,6 @@ int	ft_iscross(t_gob *ob, t_light *l, t_cam *cam)
 	return (i);
 }
 
-//最初のtmp1,rayと物体のぶつかる場所の座標
-//tmp2：tmp1からlightへの方向ベクトル
-//次のtmp1,今注目してる球の中心の座標を引いたベクトル
-//tmp2をunitにしてないと，光源に向かうベクトルと，球との距離がきちんととれない．
-//光源が手前にあるか判定をいれる．その時にunit vectorにするのを忘れない．
 int	iscross_sp(t_gob *sp, t_vec3 lp, t_cam *cam)
 {
 	t_vec3	tmp1;
@@ -48,8 +42,8 @@ int	iscross_sp(t_gob *sp, t_vec3 lp, t_cam *cam)
 	a = ft_v_d_len(tmp2);
 	b = ft_inner_product(tmp1, tmp2);
 	c = ft_v_d_len(tmp1) - sp->d * sp->d / 4;
-	sp->h = ft_quadratic_func(a, b, c);
-	if (0.00000000001 < sp->h && sp->h < sqrt(sp->h))
+	a = ft_quadratic_func(a, b, c);
+	if (0.00000000001 < a && a < sqrt(sp->h))
 		return (1);
 	else
 		return (0);

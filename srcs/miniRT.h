@@ -127,6 +127,7 @@ typedef struct s_minirt
 	double		hight;
 	void		*mlx;
 	void		*win;
+	int			keycode;
 }	t_minirt;
 
 //in main file
@@ -205,7 +206,7 @@ double	ft_tr_color(t_gob *tr, t_cam *cam, t_light *l, t_amblight al);
 double	ft_make_tr(t_gob *tr, t_vec3 vray, t_vec3 camp);
 t_color	ft_set_color(double r, double g, double b);
 
-t_color	ft_ambient_light(t_color c_color, t_amblight a);
+t_color	ft_ambient_light(t_color c_color, t_amblight a, t_color o_color);
 //light
 void	ft_diffusion_light_sp(t_cam *cam, t_light *l, t_gob *sp, t_vec3 v);
 void	ft_diffusion_light_pl(t_cam *cam, t_light *l, t_gob *pl);
@@ -236,6 +237,7 @@ void	ft_change_camera_next(t_minirt *rt);
 void	ft_change_camera_prev(t_minirt *rt);
 void	ft_close(t_minirt *rt);
 int		ft_click_event(t_minirt *minirt);
+int		ft_show_event(t_minirt *rt);
 
 //utility functions
 //function in libft1

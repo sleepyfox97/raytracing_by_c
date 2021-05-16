@@ -33,7 +33,10 @@ t_vec3	make_screan_util1(t_vec3 vd)
 		vsb1 = ft_set_vecele(0, 1, 0);
 	else
 	{
-		vsb1.x = 1;
+		if (vd.y < 0)
+			vsb1.x = -1;
+		else
+			vsb1.x = 1;
 		vsb1.z = 0;
 		vsb1.y = (-1) * (vd.x * vsb1.x) / vd.y;
 	}

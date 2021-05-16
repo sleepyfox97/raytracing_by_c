@@ -14,6 +14,12 @@ int	ft_key_event(int kyecode, t_minirt *rt)
 void	ft_change_camera_next(t_minirt *rt)
 {
 	rt->firstcam = rt->firstcam->next;
+	printf("\n\x1b[35m===NOW===\033[m\n");
+	printf("camera place \n");
+	ft_put_vector(rt->firstcam->p);
+	printf("\nnormalized orientation vector of camera\n");
+	ft_put_vector(rt->firstcam->vd);
+	printf("\ncamera's fov = %lf\n", rt->firstcam->fov);
 	ft_use_mlx(rt);
 	return ;
 }
@@ -21,12 +27,16 @@ void	ft_change_camera_next(t_minirt *rt)
 void	ft_change_camera_prev(t_minirt *rt)
 {
 	rt->firstcam = rt->firstcam->prev;
-	mlx_clear_window(rt->mlx, rt->win);
+	printf("\n\x1b[35m===NOW===\033[m\n");
+	printf("camera place \n");
+	ft_put_vector(rt->firstcam->p);
+	printf("\nnormalized orientation vector of camera\n");
+	ft_put_vector(rt->firstcam->vd);
+	printf("\ncamera's fov = %lf\n", rt->firstcam->fov);
 	ft_use_mlx(rt);
 	return ;
 }
 
-//free everything?
 void	ft_close(t_minirt *rt)
 {
 	mlx_destroy_window(rt->mlx, rt->win);
@@ -35,9 +45,6 @@ void	ft_close(t_minirt *rt)
 	return ;
 }
 
-//clickでwindow閉じるときの関数
-//clickで終了するとなぜかsegfoが起こる．escpだとおこらない．
-//free everything?
 int	ft_click_event(t_minirt *rt)
 {
 	mlx_destroy_window(rt->mlx, rt->win);

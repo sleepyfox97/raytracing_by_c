@@ -1,10 +1,11 @@
 #include "./miniRT.h"
 
-t_color	ft_ambient_light(t_color c_color, t_amblight a)
+//difuselightと同様にうまく掛け算する必要がある．
+t_color	ft_ambient_light(t_color c_color, t_amblight a, t_color o_color)
 {
-	c_color.r = a.color.r * a.r;
-	c_color.g = a.color.g * a.r;
-	c_color.b = a.color.b * a.r;
+	c_color.r = a.color.r * a.r * o_color.r / 255;
+	c_color.g = a.color.g * a.r * o_color.g / 255;
+	c_color.b = a.color.b * a.r * o_color.b / 255;
 	return (c_color);
 }
 
@@ -38,7 +39,6 @@ void 	ft_diffusion_light_sp(t_cam *c, t_light *l, t_gob *sp, t_vec3 v)
 	return ;
 }
 
-//sqareとtriangleに活用可能．
 //you havet to check direction of normal vector
 void	ft_diffusion_light_pl(t_cam *c, t_light *l, t_gob *pl)
 {

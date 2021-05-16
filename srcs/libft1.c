@@ -1,6 +1,5 @@
 #include "./miniRT.h"
 
-//atof atolをもっかい見直し，良くできないかを考える．
 int	ft_isspace(char c)
 {
 	if (c == ' ' || (9 <= c && c <= 13))
@@ -50,7 +49,6 @@ static int	ft_atol_sub(char *s, int i, double *result, double minus)
 	return (1);
 }
 
-//0.のパターン以外の0は速攻，0で返すことにする．
 int	ft_atol(char *s, int i, double *result)
 {
 	double	minus;
@@ -59,7 +57,7 @@ int	ft_atol(char *s, int i, double *result)
 	*result = 0;
 	while (ft_isspace(s[i]))
 		i++;
-	if (s[i] == '+' || s[i] == '-')
+	if (s[i] == '-')
 		if (s[i++] == '-')
 			minus = -1;
 	if (s[i] == '0' && s[i + 1] == '0')

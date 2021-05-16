@@ -1,9 +1,5 @@
 #include "./miniRT.h"
 
-//vncp　中心軸からpへのベクトル
-//pは何回も中で計算するの無駄
-//iscycrossで自分自身との交差判定
-//cos2は正の時のみ，評価
 void	ft_diffusion_light_cy(t_cam *cam, t_light *l, t_gob *cy)
 {
 	double	cos1;
@@ -37,10 +33,6 @@ void	ft_diffusion_light_cysub(double cos2, t_cam *c, t_light *l, t_gob *cy)
 	cos2 = pow(cos2, 10) * l->r * 0.6;
 	c->tmpcolor = ft_set_d_color(c->tmpcolor, l->color, cy->color, cos2);
 }
-
-//計算の精度の問題で，0とinfあたりをぐるぐるしてしまい，正確にtの値が取れていない．
-//本来，infの場所が，なぜか，0前後で判断されてしまっている．(実際，dそのものから，出してるからそうなる)
-//丸め誤差の関係上生じてしまうっぽい
 
 int	iscycross(t_gob *cy, t_vec3 lp, t_vec3 p)
 {

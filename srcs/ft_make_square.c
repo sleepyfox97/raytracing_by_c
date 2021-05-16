@@ -9,7 +9,7 @@ double	ft_sq_color(t_gob *sq, t_cam *cam, t_light *l, t_amblight al)
 	if (cam->distance > t && t >0)
 	{
 		cam->distance = t;
-		cam->tmpcolor = ft_ambient_light(cam->tmpcolor, al);
+		cam->tmpcolor = ft_ambient_light(cam->tmpcolor, al, sq->color);
 		ltmp = l;
 		while (l != NULL)
 		{

@@ -8,7 +8,10 @@ int	ft_get_info(t_minirt *minirt, char *argv)
 
 	fd = open(argv, O_RDONLY);
 	if (fd <= 0)
+	{
+		write(2, "Error\n", 6);
 		return (0);
+	}
 	line = ft_read_rtfile(fd);
 	sp_line = ft_split(line, '\n');
 	free (line);
@@ -74,7 +77,7 @@ int	ft_switch_inputtype(t_minirt *minirt, char *line)
 	int	j;
 
 	j = 0;
-	if (line[0] == 'c' && line[1] == ' ')
+	if (line[0] == 'c' && ft_isspace(line[1]))
 		j = ft_cam_input(&(minirt->firstcam), line);
 	else if (line[0] == 'l')
 		j = ft_light_input(&(minirt->firstlight), line);

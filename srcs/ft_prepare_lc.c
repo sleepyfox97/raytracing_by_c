@@ -3,10 +3,10 @@
 int	ft_prepare_print(t_minirt *rt)
 {
 	rt->mlx = mlx_init();
+	ft_window_resize(rt);
 	if (!ft_cam_prepare(rt->firstcam, rt->width, rt->hight))
 		return (0);
 	ft_obj_prepare(rt->firstgob);
-	ft_window_resize(rt);
 	return (1);
 }
 

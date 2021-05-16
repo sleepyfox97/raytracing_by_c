@@ -1,9 +1,5 @@
 #include "./miniRT.h"
 
-//bmpファイルは左下から，右上に向かって表示される．
-//画像の横データは4の倍数にbyteに揃えないと行けない．そろわない部分には0を入れる
-//今回は，一ピクセル24bitの3bytemapなので，ここに注意
-//filesize=14 + 10の部分の14はheader部分，10は
 static void	wirte_bmp_file_header(t_minirt *rt, int fd)
 {
 	uint32_t	filesize;
@@ -17,9 +13,6 @@ static void	wirte_bmp_file_header(t_minirt *rt, int fd)
 	offset = 14 + 10;
 	write(fd, &offset, 4);
 }
-
-//information headerのsize
-//プレーン数，常に1で2byte
 
 static void	write_bmp_info_header(t_minirt *rt, int fd)
 {
@@ -37,7 +30,6 @@ static void	write_bmp_info_header(t_minirt *rt, int fd)
 	write(fd, &tmp, 2);
 }
 
-//imageはRGBの並びなので，BRGの並びにして，0が一番下の8btiを占めるようにbitシフトして返す．
 static unsigned int	get_image(int *image, int x, int y, t_minirt *rt)
 {
 	unsigned int	re;
@@ -66,7 +58,6 @@ static void	write_image_data(t_minirt *rt, int *image, int fd)
 	}
 }
 
-//カメラごとに適当に名前を付ける必要がある．
 int	make_bmpfile(t_minirt *rt)
 {
 	int		fd;

@@ -1,16 +1,5 @@
 #include "./miniRT.h"
 
-//argv[1]確認して，読み取りファイルをdefineする．
-//00が頭にくる場合すべてatolではねるようにしたい．
-//argv[1]が.rtで終わるファイルかを確認する．vnoが000の場合はerrorケース
-//unirt vectorの大きさが0になる場合（全ての要素が0の時）をはじく．
-//最後に全部freeする．
-//カメラが一個もない時のerror処理．
-//A.Rが一つしかないかを確認してerror処理．
-//24bit mapを作る．
-//RGBの順序で色の値が記録される．
-//行データをpaddingして4byteの境界にそろえる必要がある．
-
 int	main(int argc, char *argv[])
 {
 	t_minirt	rt;
@@ -39,10 +28,6 @@ int	main(int argc, char *argv[])
 	return (0);
 }
 
-//3:free elements
-//A,R,cがない時，A，Rが二つある時のerror処理
-//print_prepare_cam(minirt->firstcam);
-//print_prepare_obj(minirt->firstgob);
 void	ft_minirt(t_minirt *minirt, char *argv)
 {
 	int	i;
@@ -60,6 +45,7 @@ void	ft_minirt(t_minirt *minirt, char *argv)
 		if (!ft_prepare_print(minirt))
 		{
 			ft_clear_minirt(minirt);
+			exit (0);
 			return ;
 		}
 		ft_print_obj(minirt);
@@ -75,5 +61,6 @@ void	ft_initialize_minirt(t_minirt *minirt)
 	minirt->al.flag = -1;
 	minirt->width = -1;
 	minirt->hight = -1;
+	minirt->keycode = -1;
 	return ;
 }
