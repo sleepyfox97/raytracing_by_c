@@ -77,7 +77,7 @@ int	ft_switch_inputtype(t_minirt *minirt, char *line)
 	int	j;
 
 	j = 0;
-	if (line[0] == 'c' && line[1] == ' ')
+	if (line[0] == 'c' && ft_isspace(line[1]))
 		j = ft_cam_input(&(minirt->firstcam), line);
 	else if (line[0] == 'l')
 		j = ft_light_input(&(minirt->firstlight), line);

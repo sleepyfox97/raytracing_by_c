@@ -42,8 +42,8 @@ int	iscross_sp(t_gob *sp, t_vec3 lp, t_cam *cam)
 	a = ft_v_d_len(tmp2);
 	b = ft_inner_product(tmp1, tmp2);
 	c = ft_v_d_len(tmp1) - sp->d * sp->d / 4;
-	sp->h = ft_quadratic_func(a, b, c);
-	if (0.00000000001 < sp->h && sp->h < sqrt(sp->h))
+	a = ft_quadratic_func(a, b, c);
+	if (0.00000000001 < a && a < sqrt(sp->h))
 		return (1);
 	else
 		return (0);

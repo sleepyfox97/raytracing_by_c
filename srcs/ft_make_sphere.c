@@ -12,7 +12,7 @@ double	ft_sp_color(t_gob *sp, t_cam *cam, t_light *l, t_amblight al)
 	if (cam->distance > tmp1)
 	{
 		cam->distance = tmp1;
-		cam->tmpcolor = ft_ambient_light(cam->tmpcolor, al);
+		cam->tmpcolor = ft_ambient_light(cam->tmpcolor, al, sp->color);
 		while (l != NULL)
 		{
 			if (!ft_iscross(sp, l, cam))
