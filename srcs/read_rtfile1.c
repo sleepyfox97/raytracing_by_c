@@ -100,17 +100,17 @@ int	ft_check_input(t_minirt *minirt)
 		ft_clear_minirt(minirt);
 		return (0);
 	}
-	else if (minirt->al.flag == -1)
-	{
-		ft_put_ambient_error();
-		ft_clear_minirt(minirt);
-		return (0);
-	}
-	else if (minirt->firstcam == NULL)
-	{
-		ft_put_camera_error();
-		ft_clear_minirt(minirt);
-		return (0);
-	}
+	// else if (minirt->al.flag == -1)
+	// {
+	// 	ft_put_ambient_error();
+	// 	ft_clear_minirt(minirt);
+	// 	return (0);
+	// }
+	// else if (minirt->firstcam == NULL)
+	// {
+	// 	ft_put_camera_error();
+	// 	ft_clear_minirt(minirt);
+	// 	return (0);
+	// }
 	return (1);
 }

@@ -2,12 +2,15 @@
 
 int	ft_key_event(int kyecode, t_minirt *rt)
 {
+	if (rt->firstcam != NULL)
+	{
+		if (kyecode == K_LEFT)
+			ft_change_camera_next(rt);
+		if (kyecode == K_RIGHT)
+			ft_change_camera_prev(rt);
+	}
 	if (kyecode == K_ESC)
 		ft_close(rt);
-	if (kyecode == K_LEFT)
-		ft_change_camera_next(rt);
-	if (kyecode == K_RIGHT)
-		ft_change_camera_prev(rt);
 	return (0);
 }
 

@@ -4,6 +4,7 @@ int	main(int argc, char *argv[])
 {
 	t_minirt	rt;
 
+	rt.argc = argc;
 	ft_initialize_minirt(&rt);
 	if (argc == 2)
 	{
@@ -39,12 +40,15 @@ void	ft_minirt(t_minirt *minirt, char *argv)
 		exit (0);
 		return ;
 	}
-	if (i == 1)
+	if (minirt->argc == 2)
+		ft_window_resize(minirt);
+	if (i == 1 && minirt->firstcam != NULL)
 	{
 		print_minirt_struct(minirt);
 		if (!ft_prepare_print(minirt))
 		{
 			ft_clear_minirt(minirt);
+			printf("Error\n\nmalloc error\n");
 			exit (0);
 			return ;
 		}
@@ -55,12 +59,12 @@ void	ft_minirt(t_minirt *minirt, char *argv)
 
 void	ft_initialize_minirt(t_minirt *minirt)
 {
+	minirt->mlx = mlx_init();
 	minirt->firstcam = NULL;
 	minirt->firstlight = NULL;
 	minirt->firstgob = NULL;
 	minirt->al.flag = -1;
 	minirt->width = -1;
 	minirt->hight = -1;
-	minirt->keycode = -1;
 	return ;
 }

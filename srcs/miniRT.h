@@ -44,8 +44,7 @@ typedef struct s_color
 	double	b;
 }	t_color;
 
-//カメラの回転のことを考えたら，最初から，クオータニオンで持ってた方が多分いいんだけど，
-//今回は，必要になったら構造体要素に追加して，変換のプログラム書くことにする
+
 //camera circular struct list.
 //p:place, vd:direction vector, vsb:screen base vector,
 //vptos:vector form camera place to screan origin,vray:ray vector from camera
@@ -53,7 +52,6 @@ typedef struct s_color
 //image: this varinable has every pixel color informatin,
 //so, use pixel put to this varinable, we can see the window view.
 
-// imageとともに，width * hightでmalloc
 typedef struct s_cam
 {
 	int				cnum;
@@ -94,7 +92,6 @@ typedef struct s_amblight
 //gob means geometric object.
 //vno: normalized orientation vector.
 //vctoc:vector from camera to object center. you have to chage if camera change.
-//dは直径なので注意(rtファイルで与えられるのは直径)
 //use h onluy for cylinder hight.
 typedef struct s_gob
 {
@@ -127,7 +124,7 @@ typedef struct s_minirt
 	double		hight;
 	void		*mlx;
 	void		*win;
-	int			keycode;
+	int			argc;
 }	t_minirt;
 
 //in main file

@@ -3,9 +3,18 @@
 //difuselightと同様にうまく掛け算する必要がある．
 t_color	ft_ambient_light(t_color c_color, t_amblight a, t_color o_color)
 {
-	c_color.r = a.color.r * a.r * o_color.r / 255;
-	c_color.g = a.color.g * a.r * o_color.g / 255;
-	c_color.b = a.color.b * a.r * o_color.b / 255;
+	if (a.flag == 1)
+	{
+		c_color.r = a.color.r * a.r * o_color.r / 255;
+		c_color.g = a.color.g * a.r * o_color.g / 255;
+		c_color.b = a.color.b * a.r * o_color.b / 255;
+	}
+	else if (a.flag == -1)
+	{
+		c_color.r = 0;
+		c_color.g = 0;
+		c_color.b = 0;
+	}
 	return (c_color);
 }
 

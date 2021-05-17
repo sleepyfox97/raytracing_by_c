@@ -41,7 +41,7 @@ int	iscycross(t_gob *cy, t_vec3 lp, t_vec3 p)
 	double	t;
 	double	a;
 
-	if (cy->p2.x == 1)
+	if (cy->p2.x == 1)//ここがバグの原因そう
 		return (0);
 	a = cy->p2.x;
 	tmp = ft_linear_transform(lp, p, -1, 1);
@@ -49,7 +49,13 @@ int	iscycross(t_gob *cy, t_vec3 lp, t_vec3 p)
 	tmp = ft_make_unitvec(tmp);
 	t = ft_make_cy(cy, tmp, lp);
 	cy->p2.x = a;
+printf("t = %lf\n",t);
 	if (0.000000001 < t && t < l - 0.000000001)
 		return (1);
 	return (0);
 }
+
+//例のケースに関して
+//cyのp2.xで見てるflagが変になってるパターンおかしい．
+//計算の過程で書き換えてはいけないものを書き換えて閉まっているパターン
+
