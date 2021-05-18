@@ -100,6 +100,8 @@ int	ft_check_input(t_minirt *minirt)
 		ft_clear_minirt(minirt);
 		return (0);
 	}
+	return (1);
+}
 	// else if (minirt->al.flag == -1)
 	// {
 	// 	ft_put_ambient_error();
@@ -112,5 +114,3 @@ int	ft_check_input(t_minirt *minirt)
 	// 	ft_clear_minirt(minirt);
 	// 	return (0);
 	// }
-	return (1);
-}

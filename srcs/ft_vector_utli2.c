@@ -12,7 +12,7 @@ t_vec3	ft_set_vecele(double x, double y, double z)
 
 void	ft_put_vector(t_vec3 v)
 {
-	printf("v.x=%lf, v.y=%lf, v.z=%lf\n", v.x, v.y, v.z);
+	printf("v.x=%f, v.y=%f, v.z=%f\n", v.x, v.y, v.z);
 	return ;
 }
 

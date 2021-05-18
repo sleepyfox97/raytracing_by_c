@@ -4,17 +4,19 @@ double	ft_cy_color(t_gob *cy, t_cam *cam, t_light *l, t_amblight al)
 {
 	double	t;
 	t_light	*ltmp;
+	t_vec3	vncp;
 
 	t = ft_make_cy(cy, cam->vray, cam->p);
 	if (cam->distance > t && t > 0)
 	{
 		cam->distance = t;
 		cam->tmpcolor = ft_ambient_light(cam->tmpcolor, al, cy->color);
+		vncp = ft_linear_transform(cy->vno, cy->p1, cy->p2.y, 1.0);
 		ltmp = l;
 		while (l != NULL)
 		{
 			if (!ft_iscross(cy, l, cam))
-				ft_diffusion_light_cy(cam, l, cy);
+				ft_diffusion_light_cy(cam, l, cy, vncp);
 			l = l->next;
 		}
 		l = ltmp;

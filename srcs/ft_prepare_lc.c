@@ -53,4 +53,3 @@ int	ft_cam_prepare(t_cam *firstcam, double width, double hight)
 	tmp1->prev = tmp2;
 	return (1);
 }
-

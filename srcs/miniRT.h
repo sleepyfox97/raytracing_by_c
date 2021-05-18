@@ -44,7 +44,6 @@ typedef struct s_color
 	double	b;
 }	t_color;
 
-
 //camera circular struct list.
 //p:place, vd:direction vector, vsb:screen base vector,
 //vptos:vector form camera place to screan origin,vray:ray vector from camera
@@ -207,7 +206,7 @@ t_color	ft_ambient_light(t_color c_color, t_amblight a, t_color o_color);
 //light
 void	ft_diffusion_light_sp(t_cam *cam, t_light *l, t_gob *sp, t_vec3 v);
 void	ft_diffusion_light_pl(t_cam *cam, t_light *l, t_gob *pl);
-void	ft_diffusion_light_cy(t_cam *cam, t_light *l, t_gob *cy);
+void	ft_diffusion_light_cy(t_cam *cam, t_light *l, t_gob *cy, t_vec3 vncp);
 void	ft_diffusion_light_cysub(double cos2, t_cam *c, t_light *l, t_gob *cy);
 int		iscycross(t_gob *cy, t_vec3 lp, t_vec3 p);
 
