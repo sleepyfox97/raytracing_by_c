@@ -225,6 +225,7 @@ double	ft_quadratic_func(double a, double b, double c);
 
 //make bmpfile
 int		make_bmpfile(t_minirt *rt);
+void	ft_null_camera_error(void);
 
 //kye operation
 void	ft_use_mlx(t_minirt *rt);

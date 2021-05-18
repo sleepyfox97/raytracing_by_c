@@ -30,14 +30,6 @@ static void	write_bmp_info_header(t_minirt *rt, int fd)
 	write(fd, &tmp, 2);
 }
 
-static unsigned int	get_image(int *image, int x, int y, t_minirt *rt)
-{
-	unsigned int	re;
-
-	re = (unsigned int)image[y + x * (int)rt->hight];
-	return (re);
-}
-
 static void	write_image_data(t_minirt *rt, int *image, int fd)
 {
 	unsigned int	tmp;
@@ -50,12 +42,18 @@ static void	write_image_data(t_minirt *rt, int *image, int fd)
 		x = 0;
 		while (x < rt->width)
 		{
-			tmp = get_image(image, x, y, rt);
+			tmp = (unsigned int)image[y + x * (int)rt->hight];
 			write(fd, &tmp, 4);
 			x++;
 		}
 		y--;
 	}
+}
+
+void	ft_null_camera_error(void)
+{
+	ft_put_camera_error();
+	exit (0);
 }
 
 int	make_bmpfile(t_minirt *rt)
@@ -64,6 +62,8 @@ int	make_bmpfile(t_minirt *rt)
 	int		tmp;
 	char	file[7];
 
+	if (rt->firstcam == NULL)
+		ft_null_camera_error();
 	tmp = rt->firstcam->cnum;
 	ft_memcpy(file, "./a.bmp", 7);
 	while (1)
