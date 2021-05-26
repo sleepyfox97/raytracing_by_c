@@ -55,7 +55,7 @@ This line means ambient light.
 ```rt
 A 0.1  255,255,255
 ```
-`A` means anbient light. Second double paramerter is light strength ratio. Normaly, this is around `0.1`. This parameter have to `0 ~ 1`<br>
+`A` means anbient light. Second double paramerter is light strength ratio. Normaly, this is around `0.1`. <br>This parameter have to `0 ~ 1`<br>
 Next elements means RGB color in range `0 ~ 255`(int).<br>
 
 ``light``
@@ -63,7 +63,8 @@ This line means spot light.
 ```rt
 l  15,15,-15   0.9   255,255,255
 ```
-``l``means lgith line.Second double paramerter is light strength ratio. Normaly, this is around `0.1`. This parameter have to `0 ~ 1`<br>
+``l``means lgith line.<br>
+Second double paramerter is light strength ratio. Normaly, this is around `0.1`. This parameter have to `0 ~ 1`<br>
 Next elements means RGB color in range `0 ~ 255`(int).<br>
 
 ``camera``
@@ -71,14 +72,16 @@ This line means camera information.<br>
 ```rt
 c    0,20,0    0,-1,0    60
 ```
-``c`` means camera line. Second elements means x,y,z coordinates of the view point. Third elements means 3d normalized orientation vector in range `-1 ~ 1`. Last elements Horizontal field of view in degrees in range `0 ~ 180`<br>
+``c`` means camera line.<br>
+Second elements means x,y,z coordinates of the view point.<br>
+Third elements means 3d normalized orientation vector in range `-1 ~ 1`. Last elements Horizontal field of view in degrees in range `0 ~ 180`<br>
 
 ``sphere``
 This line means sphere.<br>
 ```rt
 sp  5,0,0   3   255,0,0
 ```
-``sp`` means sphere line. Second elements means x,y,z coordinates of the sphere centor(`type double`).
+``sp`` means sphere line. Second elements means x,y,z coordinates of the sphere centor(`type double`).<br>
 Third elements means the sphere diameter(`type double`).Last elements means RGB color(`type int`).<br>
 
 ``plane``
@@ -86,16 +89,16 @@ This line means plane.<br>
 ```rt
 pl  0,-4,0    0,1,0   100,100,100
 ```
-``pl`` means plane line. Second elements means x,y,z coordinates of the point on the plane(`type double`).
-Third elements means the 3d normalized orientation vector in range `-1 ~ 1`(`type double`). Last elements means RGB color(`type int`).<br>
+``pl`` means plane line. Second elements means x,y,z coordinates of the point on the plane(`type double`).<br>
+Third elements means the 3d normalized orientation vector in range `-1 ~ 1`(`type double`). Last elements <br>means RGB color(`type int`).<br>
 
 ``square``
 This line means square.<br>
 ```rt
 sq   5,0,0  5,5,5   10    255,0,0
 ```
-``sq`` means plane line. Second elements means x,y,z coordinates of the centor of the square(`type double`).
-Third elements means the 3d normalized orientation vector in range `-1 ~ 1`(`type double`).
+``sq`` means plane line. Second elements means x,y,z coordinates of the centor of the square(`type double`).<br>
+Third elements means the 3d normalized orientation vector in range `-1 ~ 1`(`type double`).<br>
 Forth elements means the square's size(`type int`)<br>
 Last elements means RGB color(`type int`).<br>
 
